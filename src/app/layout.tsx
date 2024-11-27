@@ -1,8 +1,13 @@
 import "@/styles/globals.css";
 
-import { GeistSans } from "geist/font/sans";
+import { Archivo } from "next/font/google";
 import { type Metadata } from "next";
 import Providers from "./components/Providers";
+
+const archivo = Archivo({
+  subsets: ["latin"],
+  variable: "--font-archivo",
+});
 
 export const metadata: Metadata = {
   title: "Create T3 App",
@@ -14,7 +19,7 @@ export default function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="en" className={`${GeistSans.variable}`}>
+    <html lang="en" className={`${archivo.variable}`}>
       <Providers>
         <body>{children}</body>
       </Providers>
