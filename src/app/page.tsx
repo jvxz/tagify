@@ -1,3 +1,9 @@
+import { Button } from "./components/Button";
+
 export default function Page() {
-  return <div></div>;
+  return (
+    <div>
+      <Button>Click me</Button>
+    </div>
+  );
 }
