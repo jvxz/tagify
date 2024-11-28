@@ -15,28 +15,13 @@ const items = [
   {
     id: 1,
     title: "Documents",
-    children: [
-      {
-        id: 2,
-        title: "Project",
-        children: [{ id: 3, title: "Weekly Report", children: [] }],
-      },
-    ],
-  },
-  {
-    id: 4,
-    title: "Photos",
-    children: [
-      { id: 5, title: "Image 1", children: [] },
-      { id: 6, title: "Image 2", children: [] },
-    ],
   },
 ];
 
 export default function FileTree() {
   return (
     <Tree
-      className="w-[250px]"
+      className="w-full px-8"
       aria-label="Files"
       selectionMode="multiple"
       items={items}
@@ -45,12 +30,11 @@ export default function FileTree() {
         return (
           <TreeItem textValue={item.title}>
             <TreeItemContent>
-              {item.children.length ? <TreeItemExpandButton /> : null}
               <Checkbox slot="selection" />
-              {item.title}
-              <TreeItemInfoButton />
+              <p className="cursor-default select-none">{item.title}</p>
+              {/* <TreeItemInfoButton /> */}
             </TreeItemContent>
-            <Collection items={item.children}>{renderItem}</Collection>
+            {/* <Collection items={item.children}>{renderItem}</Collection> */}
           </TreeItem>
         );
       }}
