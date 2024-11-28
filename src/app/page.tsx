@@ -3,24 +3,24 @@ import {
   ResizablePanel,
   ResizablePanelGroup,
 } from "@/components/ui/resizable";
-import FileSelect from "./components/FileSelect";
-import FileTree from "./components/FileTree";
-import { FileTreeSort } from "./components/FileTreeSort";
+import FileTreePanel from "./components/FileTreePanel";
+import FileEditorPanel from "./components/FileEditorPanel";
 
 export default function Page() {
   return (
     <ResizablePanelGroup direction="horizontal" className="flex bg-background">
-      <ResizablePanel className="w-[300px] shadow-md">
-        <div className="flex p-4">
-          <div className="flex-1">
-            <FileTreeSort />
-          </div>
-          <FileSelect />
-        </div>
-        <FileTree />
+      <ResizablePanel
+        className="w-[300px] shadow-md"
+        minSize={25}
+        collapsible
+        defaultSize={25}
+      >
+        <FileTreePanel />
       </ResizablePanel>
-      <ResizableHandle />
-      <ResizablePanel className="flex flex-col flex-1"></ResizablePanel>
+      <ResizableHandle withHandle />
+      <ResizablePanel className="flex flex-1 flex-col">
+        <FileEditorPanel />
+      </ResizablePanel>
     </ResizablePanelGroup>
   );
 }
