@@ -21,7 +21,7 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${archivo.variable}`}>
       <Providers>
-        <body>{children}</body>
+        <body className="h-screen">{children}</body>
       </Providers>
     </html>
   );

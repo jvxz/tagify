@@ -1,14 +1,26 @@
+import {
+  ResizableHandle,
+  ResizablePanel,
+  ResizablePanelGroup,
+} from "@/components/ui/resizable";
+import FileSelect from "./components/FileSelect";
 import FileTree from "./components/FileTree";
-import ThemeToggle from "./components/ThemeToggle";
+import { FileTreeSort } from "./components/FileTreeSort";
 
 export default function Page() {
   return (
-    <main className="flex h-screen flex-row bg-background">
-      <div className="h-full w-[300px] border-r border-border p-4 shadow-md">
-        <ThemeToggle />
+    <ResizablePanelGroup direction="horizontal" className="flex bg-background">
+      <ResizablePanel className="w-[300px] shadow-md">
+        <div className="flex p-4">
+          <div className="flex-1">
+            <FileTreeSort />
+          </div>
+          <FileSelect />
+        </div>
         <FileTree />
-      </div>
-      <div className="flex h-full flex-1 flex-col"></div>
-    </main>
+      </ResizablePanel>
+      <ResizableHandle />
+      <ResizablePanel className="flex flex-col flex-1"></ResizablePanel>
+    </ResizablePanelGroup>
   );
 }
