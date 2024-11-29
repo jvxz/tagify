@@ -1,20 +1,15 @@
-import FileSelect from "./FileSelect";
 import FileTree from "./FileTree";
-import { FileTreeSort } from "./FileTreeSort";
+import FileTreeBar from "./FileTreeBar";
 
 export default function FileTreePanel() {
   return (
     <div className="flex flex-col">
-      <div className="flex h-16 items-center border-b border-border px-4">
-        <p className="font-mono text-lg font-bold">tagify</p>
+      <div className="flex h-16 items-center justify-between border-b border-border px-4">
+        <p className="text-lg font-bold">tagify</p>
+        <p>v0.0.1</p>
       </div>
+      <FileTreeBar />
       <div className="flex flex-col">
-        <div className="flex p-4">
-          <div className="flex-1">
-            <FileTreeSort />
-          </div>
-          <FileSelect />
-        </div>
         <FileTree />
       </div>
     </div>
