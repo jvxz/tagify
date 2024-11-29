@@ -1,12 +1,12 @@
 import "@/styles/globals.css";
-import { Archivo } from "next/font/google";
 import { type Metadata } from "next";
 import Providers from "./components/Providers";
 import Sidebar from "./components/Sidebar";
+import localFont from "next/font/local";
 
-const archivo = Archivo({
-  subsets: ["latin"],
-  variable: "--font-archivo",
+const Hedvig_Letters = localFont({
+  src: "../styles/fonts/HedvigLettersSans-Regular.woff2",
+  variable: "--font-hedvig-letters",
 });
 
 export const metadata: Metadata = {
@@ -19,7 +19,7 @@ export default function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="en" className={`${archivo.variable}`}>
+    <html lang="en" className={`${Hedvig_Letters.variable}`}>
       <Providers>
         <body className="flex h-screen">
           <Sidebar />

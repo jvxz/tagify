@@ -14,12 +14,15 @@ export function FileSelect() {
       onSelect={(e) => {
         if (!e) return;
         const files = Array.from(e);
-        const filenames = files.map((file) => file.name);
+        const filenames = files.map((file) => ({
+          id: file.name,
+          name: file.name,
+        }));
         addFiles(filenames);
       }}
     >
       <Button size="icon" variant="outline">
-        <Import className="w-4 h-4" />
+        <Import className="size-5" />
       </Button>
     </FileTrigger>
   );

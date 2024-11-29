@@ -10,7 +10,7 @@ export default {
 				DEFAULT: '150ms'
 			},
 			fontFamily: {
-				sans: ["var(--font-archivo)", ...fontFamily.sans]
+				sans: ["var(--font-hedvig-letters)", ...fontFamily.sans]
 			},
 			colors: {
 				background: 'hsl(var(--background))',

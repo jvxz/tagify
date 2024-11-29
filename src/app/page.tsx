@@ -12,7 +12,7 @@ export default function Page() {
       <ResizablePanel
         className="w-[300px] shadow-md"
         minSize={25}
-        collapsible
+        maxSize={50}
         defaultSize={25}
       >
         <FileTreePanel />
