@@ -1,17 +1,16 @@
 import { Button } from "@/components/ui/button";
-import {
-  SidebarContent,
-  SidebarProvider,
-  Sidebar as SidebarUI,
-} from "@/components/ui/sidebar";
+import { Settings } from "lucide-react";
+import ThemeToggle from "./ThemeToggle";
 
 export default function Sidebar() {
   return (
-    <SidebarUI>
-      <SidebarContent>
-        <Button>test</Button>
-        <Button>test</Button>
-      </SidebarContent>
-    </SidebarUI>
+    <div className="flex h-screen w-20 flex-col items-center gap-4 border-r border-border bg-background py-4">
+      <Button variant="outline" size="icon">
+        <ThemeToggle />
+      </Button>
+      <Button variant="outline" size="icon">
+        <Settings />
+      </Button>
+    </div>
   );
 }
