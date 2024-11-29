@@ -1,8 +1,8 @@
 import "@/styles/globals.css";
-
 import { Archivo } from "next/font/google";
 import { type Metadata } from "next";
 import Providers from "./components/Providers";
+import Sidebar from "./components/Sidebar";
 
 const archivo = Archivo({
   subsets: ["latin"],
@@ -21,7 +21,11 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${archivo.variable}`}>
       <Providers>
-        <body className="h-screen">{children}</body>
+        <body className="flex h-screen">
+          <Sidebar />
+
+          {children}
+        </body>
       </Providers>
     </html>
   );

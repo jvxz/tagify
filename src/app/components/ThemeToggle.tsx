@@ -1,6 +1,7 @@
 "use client";
-import { MoonIcon, SunIcon } from "@heroicons/react/24/solid";
 import { Button } from "@/components/ui/button";
+import { Moon } from "lucide-react";
+import { Sun } from "lucide-react";
 import { useTheme } from "next-themes";
 
 export default function ThemeToggle() {
@@ -12,9 +13,9 @@ export default function ThemeToggle() {
       variant="outline"
     >
       {resolvedTheme === "dark" ? (
-        <SunIcon className="h-4 w-4" />
+        <Sun className="h-4 w-4" />
       ) : (
-        <MoonIcon className="h-4 w-4" />
+        <Moon className="h-4 w-4" />
       )}
     </Button>
   );
