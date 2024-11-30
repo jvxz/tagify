@@ -1,8 +1,6 @@
-import { MP3Tag } from "mp3tag.js";
+import { fromFile } from '@catamphetamine/id3js/browser';
 
 export default async function getTags(file: File) {
-    const arrayBuffer = await file.arrayBuffer();
-    const buffer = Buffer.from(arrayBuffer);
-    const tags = MP3Tag.readBuffer(buffer);
+    const tags = await fromFile(file);
     return tags;
 }
