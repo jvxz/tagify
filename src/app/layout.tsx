@@ -2,6 +2,7 @@ import "@/styles/globals.css";
 import { type Metadata } from "next";
 import Providers from "./components/Providers";
 import Sidebar from "./components/Sidebar";
+import Dropover from "./components/Dropover";
 import localFont from "next/font/local";
 
 const Hedvig_Letters = localFont({
@@ -22,6 +23,7 @@ export default function RootLayout({
     <html lang="en" className={`${Hedvig_Letters.variable}`}>
       <Providers>
         <body className="flex h-screen">
+          <Dropover />
           <Sidebar />
 
           {children}
