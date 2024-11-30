@@ -4,7 +4,7 @@ import ThemeToggle from "./ThemeToggle";
 
 export default function Sidebar() {
   return (
-    <div className="flex h-screen w-20 flex-col items-center gap-4 border-r border-border bg-secondary/40 py-4">
+    <div className="flex h-screen w-20 flex-col items-center gap-4 border-r border-border bg-secondary/40 py-4 shadow-md">
       <ThemeToggle />
       <Button variant="outline" size="icon">
         <Cog />

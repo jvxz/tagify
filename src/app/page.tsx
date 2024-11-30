@@ -10,7 +10,7 @@ export default function Page() {
   return (
     <ResizablePanelGroup direction="horizontal" className="flex bg-background">
       <ResizablePanel
-        className="min-w-[300px] shadow-md"
+        className="min-w-[300px]"
         minSize={25}
         maxSize={50}
         defaultSize={25}
