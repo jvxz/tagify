@@ -5,16 +5,12 @@ import getTags from "@/lib/get-tags";
 
 export default function FileTree() {
   const { files, setSelectedFile } = useFileStore();
-  // const { data: tags, refetch } = useQuery({
-  //   queryKey: ["tags"],
-  //   queryFn: () => getTags(),
-  //   enabled: false
-  // });
 
   return files.map((file) => (
     <Button
       key={file.name}
       onPress={async () => {
+        console.log(file.name);
         const tags = await getTags(file.file);
         setSelectedFile({
           name: file.name,

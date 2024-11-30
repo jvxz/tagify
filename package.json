@@ -16,6 +16,7 @@
     "format:check": "prettier --check \"**/*.{ts,tsx,js,jsx,mdx}\" --cache"
   },
   "dependencies": {
+    "@catamphetamine/id3js": "^1.0.2",
     "@radix-ui/react-dialog": "^1.1.2",
     "@radix-ui/react-separator": "^1.1.0",
     "@radix-ui/react-slot": "^1.1.0",
@@ -26,7 +27,6 @@
     "clsx": "^2.1.1",
     "geist": "^1.3.0",
     "lucide-react": "^0.462.0",
-    "mp3tag.js": "^3.11.2",
     "next": "^15.0.1",
     "next-themes": "^0.4.3",
     "react": "^18.3.1",
