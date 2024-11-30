@@ -5,15 +5,16 @@ import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { List, Search } from "lucide-react";
 import { Input } from "@/components/ui/input";
+import FileTreeToolbarResetButton from "./FileTreeToolbarResetButton";
 
 export default function FileTreeBar() {
-  const [barState, setBarState] = useState<"open" | "closed">("closed");
+  const [barState, setBarState] = useState<"search" | "normal">("normal");
 
-  if (barState === "closed")
+  if (barState === "normal")
     return (
       <div className="flex gap-2 p-4">
         <Button
-          onPress={() => setBarState("open")}
+          onPress={() => setBarState("search")}
           variant="outline"
           size="icon"
         >
@@ -23,6 +24,7 @@ export default function FileTreeBar() {
         <div className="flex-1">
           <FileTreeSort />
         </div>
+        <FileTreeToolbarResetButton />
         <FileSelect />
       </div>
     );
@@ -31,7 +33,7 @@ export default function FileTreeBar() {
       <Button
         size="icon"
         variant="outline"
-        onPress={() => setBarState("closed")}
+        onPress={() => setBarState("normal")}
       >
         <List className="size-5" />
       </Button>
