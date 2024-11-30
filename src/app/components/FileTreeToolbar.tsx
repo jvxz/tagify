@@ -1,5 +1,5 @@
 "use client";
-import { FileTreeSort } from "./FileTreeSort";
+import { FileTreeSort } from "./FileTreeToolbarSort";
 import FileSelect from "./FileSelect";
 import { useState } from "react";
 import { Button } from "@/components/ui/button";

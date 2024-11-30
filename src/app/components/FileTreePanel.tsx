@@ -1,5 +1,5 @@
 import FileTree from "./FileTree";
-import FileTreeBar from "./FileTreeBar";
+import FileTreeBar from "./FileTreeToolbar";
 
 export default function FileTreePanel() {
   return (
