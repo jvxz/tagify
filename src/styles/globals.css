@@ -23,7 +23,7 @@
     --border: 48 5% 80%;
     --input: 48 5% 80%;
     --ring: 18 20% 54%;
-    --radius: 0.5rem;
+    --radius: 0.6rem;
     --sidebar-background: 0 0% 98%;
     --sidebar-foreground: 240 5.3% 26.1%;
     --sidebar-primary: 240 5.9% 10%;
@@ -69,6 +69,7 @@
   * {
     @apply border-border;
   }
+
   body {
     @apply bg-background text-foreground;
   }
