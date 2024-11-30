@@ -60,8 +60,7 @@ export default function DropHandler() {
       style={{ pointerEvents: "none" }}
     >
       <div className="rounded-lg bg-background p-8 text-center shadow-lg">
-        <p className="text-xl font-bold">drop files here</p>
-        <p className="text-muted-foreground">release to add files</p>
+        <p className="text-xl font-bold">release to add files</p>
       </div>
     </div>
   );
