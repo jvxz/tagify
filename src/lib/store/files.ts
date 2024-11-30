@@ -1,15 +1,15 @@
 import { create } from 'zustand'
-import { type ID3Tag } from 'node_modules/@catamphetamine/id3js/lib/reader/id3Tag';
+import { type IAudioMetadata } from 'music-metadata';
 
 interface FileState {
     files: {
         name: string;
         file: File;
     }[]
-    selectedFile: { name: string; file: File; tags: ID3Tag | null } | null
+    selectedFile: { name: string; file: File; tags: IAudioMetadata | null } | null
     addFile: (file: { name: string; file: File }) => void;
     addFiles: (files: { name: string; file: File }[]) => void;
-    setSelectedFile: (file: { name: string; file: File; tags: ID3Tag | null } | null) => void;
+    setSelectedFile: (file: { name: string; file: File; tags: IAudioMetadata | null } | null) => void;
 }
 
 const useFileStore = create<FileState>((set) => ({

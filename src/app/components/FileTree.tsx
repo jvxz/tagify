@@ -16,7 +16,7 @@ export default function FileTree() {
       const result = await queryClient.fetchQuery({
         queryKey: ["tags", file.name],
         queryFn: () => getTags(file.file),
-        staleTime: 1000 * 60 * 5, // Consider data fresh for 5 minutes
+        staleTime: 1000 * 60 * 5,
       });
 
       setSelectedFile({ name: file.name, file: file.file, tags: result });
