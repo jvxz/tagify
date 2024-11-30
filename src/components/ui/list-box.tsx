@@ -1,22 +1,22 @@
-"use client"
+"use client";
 
-import { Check } from "lucide-react"
+import { Check } from "lucide-react";
 import {
   Collection as AriaCollection,
   Header as AriaHeader,
   ListBox as AriaListBox,
   ListBoxItem as AriaListBoxItem,
-  ListBoxItemProps as AriaListBoxItemProps,
-  ListBoxProps as AriaListBoxProps,
+  type ListBoxItemProps as AriaListBoxItemProps,
+  type ListBoxProps as AriaListBoxProps,
   Section as AriaSection,
   composeRenderProps,
-} from "react-aria-components"
+} from "react-aria-components";
 
-import { cn } from "@/lib/utils"
+import { cn } from "@/lib/utils";
 
-const ListBoxSection = AriaSection
+const ListBoxSection = AriaSection;
 
-const ListBoxCollection = AriaCollection
+const ListBoxCollection = AriaCollection;
 
 function ListBox<T extends object>({
   className,
@@ -29,12 +29,12 @@ function ListBox<T extends object>({
           className,
           "group overflow-auto rounded-md border bg-popover p-1 text-popover-foreground shadow-md outline-none",
           /* Empty */
-          "data-[empty]:p-6 data-[empty]:text-center data-[empty]:text-sm"
-        )
+          "data-[empty]:p-6 data-[empty]:text-center data-[empty]:text-sm",
+        ),
       )}
       {...props}
     />
-  )
+  );
 }
 
 const ListBoxItem = <T extends object>({
@@ -45,7 +45,7 @@ const ListBoxItem = <T extends object>({
   return (
     <AriaListBoxItem
       textValue={
-        props.textValue || (typeof children === "string" ? children : undefined)
+        props.textValue ?? (typeof children === "string" ? children : undefined)
       }
       className={composeRenderProps(className, (className) =>
         cn(
@@ -58,8 +58,8 @@ const ListBoxItem = <T extends object>({
           "data-[hovered]:bg-accent data-[hovered]:text-accent-foreground",
           /* Selection */
           "data-[selection-mode]:pl-8",
-          className
-        )
+          className,
+        ),
       )}
       {...props}
     >
@@ -74,8 +74,8 @@ const ListBoxItem = <T extends object>({
         </>
       ))}
     </AriaListBoxItem>
-  )
-}
+  );
+};
 
 function ListBoxHeader({
   className,
@@ -86,7 +86,7 @@ function ListBoxHeader({
       className={cn("py-1.5 pl-8 pr-2 text-sm font-semibold", className)}
       {...props}
     />
-  )
+  );
 }
 
 export {
@@ -95,4 +95,4 @@ export {
   ListBoxHeader,
   ListBoxSection,
   ListBoxCollection,
-}
+};
