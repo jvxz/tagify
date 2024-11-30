@@ -4,13 +4,25 @@ import { Moon } from "lucide-react";
 import { Sun } from "lucide-react";
 import { useTheme } from "next-themes";
 
-export default function ThemeToggle() {
+export default function ThemeToggle({
+  variant,
+}: {
+  variant:
+    | "link"
+    | "default"
+    | "destructive"
+    | "outline"
+    | "secondary"
+    | "ghost"
+    | null
+    | undefined;
+}) {
   const { theme, setTheme, resolvedTheme } = useTheme();
   return (
     <Button
       onPress={() => setTheme(theme === "dark" ? "light" : "dark")}
       size="icon"
-      variant="outline"
+      variant={variant}
     >
       {resolvedTheme === "dark" ? <Sun /> : <Moon />}
     </Button>
