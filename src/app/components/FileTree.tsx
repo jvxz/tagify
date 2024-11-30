@@ -1,15 +1,7 @@
 "use client";
-import { Button } from "@/components/ui/button";
-import { Checkbox } from "@/components/ui/checkbox";
 import { Tree, TreeItem, TreeItemContent } from "@/components/ui/tree";
 import useFileStore from "@/lib/store/files";
-
-// const items = [
-//   {
-//     id: 1,
-//     title: "Documents",
-//   },
-// ];
+import FileTreeItem from "./FileTreeItem";
 
 export default function FileTree() {
   const { files } = useFileStore();
@@ -23,14 +15,14 @@ export default function FileTree() {
       >
         {function renderItem(item) {
           return (
-            <TreeItem className="h-fit" textValue={item.name}>
+            <TreeItem
+              id={item.name}
+              key={item.name}
+              className="h-fit"
+              textValue={item.name}
+            >
               <TreeItemContent>
-                <Button
-                  variant="link"
-                  className="h-fit cursor-default select-none p-0 text-sm text-foreground"
-                >
-                  {item.name}
-                </Button>
+                <FileTreeItem name={item.name} />
                 {/* <TreeItemInfoButton /> */}
               </TreeItemContent>
               {/* <Collection items={item.children}>{renderItem}</Collection> */}
