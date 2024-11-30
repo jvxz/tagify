@@ -1,15 +1,14 @@
 import { create } from 'zustand'
 
-interface File {
-    id: string;
-    name: string;
-}
-
 interface FileState {
-    files: File[]
+    files: {
+        name: string;
+        file: File;
+    }[]
     selectedFile: string | null
-    addFile: (file: File) => void;
-    addFiles: (files: File[]) => void;
+    addFile: (file: { name: string; file: File }) => void;
+    addFiles: (files: { name: string; file: File }[]) => void;
+    setSelectedFile: (file: string | null) => void;
 }
 
 const useFileStore = create<FileState>((set) => ({
@@ -17,6 +16,7 @@ const useFileStore = create<FileState>((set) => ({
     selectedFile: null,
     addFile: (file) => set((state) => ({ files: [...state.files, file] })),
     addFiles: (files) => set((state) => ({ files: [...state.files, ...files] })),
+    setSelectedFile: (file) => set(() => ({ selectedFile: file })),
 }));
 
 export default useFileStore
