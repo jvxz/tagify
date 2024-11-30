@@ -1,7 +1,10 @@
 import { JollyTextField } from "@/components/ui/textfield";
 import useFileStore from "@/lib/store/files";
+import { Image as ImageIcon } from "lucide-react";
+import Image from "next/image";
 import { useEffect, useState } from "react";
 import { Form } from "react-aria-components";
+import FileEditorPanelFormImage from "./FileEditorPanelFormImage";
 
 export default function FileEditorPanelForm() {
   const [formData, setFormData] = useState<{
@@ -56,6 +59,10 @@ export default function FileEditorPanelForm() {
     }
   }, [selectedFile]);
 
+  function handleChange(e: string) {
+    setFormData({ ...formData, [e]: e });
+  }
+
   return (
     <Form className="flex w-full flex-row gap-4 p-4" onSubmit={handleSubmit}>
       <div className="flex w-full flex-col gap-4">
@@ -77,7 +84,7 @@ export default function FileEditorPanelForm() {
         </div>
       </div>
       <div className="flex flex-col gap-4">
-        <div className="aspect-square size-64 rounded border-2 border-border"></div>
+        <FileEditorPanelFormImage />
         <div className="flex gap-4">
           <JollyTextField
             name="track number"
@@ -98,6 +105,7 @@ export default function FileEditorPanelForm() {
             value={formData.discNumber.toString()}
           />
           <JollyTextField
+            onChange={handleChange}
             name="total disks"
             label="total disks"
             value={formData.totalDiscs.toString()}
