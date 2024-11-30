@@ -9,7 +9,7 @@ interface FileState {
     selectedFile: { name: string; file: File; tags: ID3Tag | null } | null
     addFile: (file: { name: string; file: File }) => void;
     addFiles: (files: { name: string; file: File }[]) => void;
-    setSelectedFile: (file: { name: string; file: File; tags: ID3Tag | null }) => void;
+    setSelectedFile: (file: { name: string; file: File; tags: ID3Tag | null } | null) => void;
 }
 
 const useFileStore = create<FileState>((set) => ({
