@@ -1,13 +1,13 @@
 "use client";
 import useFileStore from "@/lib/store/files";
-import { Button } from "@/components/ui/button";
 import getTags from "@/lib/get-tags";
+import { Toggle } from "@/components/ui/toggle";
 
 export default function FileTree() {
   const { files, setSelectedFile } = useFileStore();
 
   return files.map((file) => (
-    <Button
+    <Toggle
       key={file.name}
       onPress={async () => {
         console.log(file.name);
@@ -18,10 +18,10 @@ export default function FileTree() {
           tags: tags,
         });
       }}
-      variant="link"
-      className="h-fit cursor-default select-none p-0 text-sm text-foreground"
+      // variant="link"
+      className="mx-4 h-fit cursor-pointer select-none justify-normal py-1 text-left text-sm text-foreground"
     >
       {file.name}
-    </Button>
+    </Toggle>
   ));
 }
