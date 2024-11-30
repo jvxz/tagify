@@ -17,7 +17,7 @@ export default function Page() {
       >
         <FileTreePanel />
       </ResizablePanel>
-      <ResizableHandle withHandle />
+      <ResizableHandle withHandle className="border-border/50" />
       <ResizablePanel defaultSize={75} className="flex flex-1 flex-col">
         <FileEditorPanel />
       </ResizablePanel>

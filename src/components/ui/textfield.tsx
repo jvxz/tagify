@@ -1,43 +1,43 @@
-"use client"
+"use client";
 
-import * as React from "react"
+import * as React from "react";
 import {
   Input as AriaInput,
-  InputProps as AriaInputProps,
+  type InputProps as AriaInputProps,
   TextArea as AriaTextArea,
-  TextAreaProps as AriaTextAreaProps,
+  type TextAreaProps as AriaTextAreaProps,
   TextField as AriaTextField,
-  TextFieldProps as AriaTextFieldProps,
-  ValidationResult as AriaValidationResult,
+  type TextFieldProps as AriaTextFieldProps,
+  type ValidationResult as AriaValidationResult,
   composeRenderProps,
   Text,
-} from "react-aria-components"
+} from "react-aria-components";
 
-import { cn } from "@/lib/utils"
+import { cn } from "@/lib/utils";
 
-import { FieldError, Label } from "./field"
+import { FieldError, Label } from "./field";
 
-const TextField = AriaTextField
+const TextField = AriaTextField;
 
 const Input = ({ className, ...props }: AriaInputProps) => {
   return (
     <AriaInput
       className={composeRenderProps(className, (className) =>
         cn(
-          "flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground",
+          "flex h-8 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground",
           /* Disabled */
           "data-[disabled]:cursor-not-allowed data-[disabled]:opacity-50",
           /* Focused */
           "data-[focused]:outline-none data-[focused]:ring-2 data-[focused]:ring-ring data-[focused]:ring-offset-2",
           /* Resets */
           "focus-visible:outline-none",
-          className
-        )
+          className,
+        ),
       )}
       {...props}
     />
-  )
-}
+  );
+};
 
 const TextArea = ({ className, ...props }: AriaTextAreaProps) => {
   return (
@@ -51,19 +51,19 @@ const TextArea = ({ className, ...props }: AriaTextAreaProps) => {
           "data-[disabled]:cursor-not-allowed data-[disabled]:opacity-50",
           /* Resets */
           "focus-visible:outline-none",
-          className
-        )
+          className,
+        ),
       )}
       {...props}
     />
-  )
-}
+  );
+};
 
 interface JollyTextFieldProps extends AriaTextFieldProps {
-  label?: string
-  description?: string
-  errorMessage?: string | ((validation: AriaValidationResult) => string)
-  textArea?: boolean
+  label?: string;
+  description?: string;
+  errorMessage?: string | ((validation: AriaValidationResult) => string);
+  textArea?: boolean;
 }
 
 function JollyTextField({
@@ -77,7 +77,7 @@ function JollyTextField({
   return (
     <TextField
       className={composeRenderProps(className, (className) =>
-        cn("group flex flex-col gap-2", className)
+        cn("group flex flex-col gap-2", className),
       )}
       {...props}
     >
@@ -90,8 +90,8 @@ function JollyTextField({
       )}
       <FieldError>{errorMessage}</FieldError>
     </TextField>
-  )
+  );
 }
 
-export { Input, TextField, JollyTextField, TextArea }
-export type { JollyTextFieldProps }
+export { Input, TextField, JollyTextField, TextArea };
+export type { JollyTextFieldProps };
