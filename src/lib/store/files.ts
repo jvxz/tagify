@@ -1,14 +1,15 @@
 import { create } from 'zustand'
+import { type MP3TagTags } from 'mp3tag.js/types/tags';
 
 interface FileState {
     files: {
         name: string;
         file: File;
     }[]
-    selectedFile: string | null
+    selectedFile: { name: string; file: File; tags: MP3TagTags | undefined } | null
     addFile: (file: { name: string; file: File }) => void;
     addFiles: (files: { name: string; file: File }[]) => void;
-    setSelectedFile: (file: string | null) => void;
+    setSelectedFile: (file: { name: string; file: File; tags: MP3TagTags | undefined }) => void;
 }
 
 const useFileStore = create<FileState>((set) => ({

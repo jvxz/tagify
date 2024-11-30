@@ -1,40 +1,31 @@
 "use client";
-import { Tree, TreeItem, TreeItemContent } from "@/components/ui/tree";
 import useFileStore from "@/lib/store/files";
-import FileTreeItem from "./FileTreeItem";
+import { Button } from "@/components/ui/button";
+import getTags from "@/lib/get-tags";
 
 export default function FileTree() {
-  const { files } = useFileStore();
-  if (files.length > 0)
-    return (
-      <Tree
-        className="w-full px-4"
-        aria-label="Files"
-        selectionMode="multiple"
-        items={files}
-      >
-        {function renderItem(item) {
-          return (
-            <TreeItem
-              id={item.name}
-              key={item.name}
-              className="h-fit"
-              textValue={item.name}
-            >
-              <TreeItemContent>
-                <FileTreeItem name={item.name} />
-                {/* <TreeItemInfoButton /> */}
-              </TreeItemContent>
-              {/* <Collection items={item.children}>{renderItem}</Collection> */}
-            </TreeItem>
-          );
-        }}
-      </Tree>
-    );
-  if (files.length === 0)
-    return (
-      <div className="flex h-full flex-1 items-center justify-center">
-        <p className="text-sm text-muted-foreground">no files loaded</p>
-      </div>
-    );
+  const { files, setSelectedFile } = useFileStore();
+  // const { data: tags, refetch } = useQuery({
+  //   queryKey: ["tags"],
+  //   queryFn: () => getTags(),
+  //   enabled: false
+  // });
+
+  return files.map((file) => (
+    <Button
+      key={file.name}
+      onPress={async () => {
+        const tags = await getTags(file.file);
+        setSelectedFile({
+          name: file.name,
+          file: file.file,
+          tags: tags,
+        });
+      }}
+      variant="link"
+      className="h-fit cursor-default select-none p-0 text-sm text-foreground"
+    >
+      {file.name}
+    </Button>
+  ));
 }
