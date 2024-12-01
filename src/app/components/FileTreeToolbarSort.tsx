@@ -9,7 +9,7 @@ import {
 
 export function FileTreeSort() {
   return (
-    <Select className="w-[150]" placeholder="Sort by">
+    <Select placeholder="Sort by">
       <SelectTrigger>
         <SelectValue />
       </SelectTrigger>
