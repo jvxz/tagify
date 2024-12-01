@@ -6,10 +6,13 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
+import useFileStore from "@/lib/store/files";
 
 export function FileTreeSort() {
+  const { files } = useFileStore();
+
   return (
-    <Select placeholder="Sort by">
+    <Select isDisabled={files.length === 0} placeholder="Sort by">
       <SelectTrigger>
         <SelectValue />
       </SelectTrigger>

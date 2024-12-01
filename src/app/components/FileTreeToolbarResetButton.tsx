@@ -33,10 +33,10 @@ export default function FileTreeToolbarResetButton() {
             You are trying to unload all files. This action cannot be undone.
           </DialogDescription>
           <DialogFooter>
-            <Button size="sm" onPress={close}>
+            <Button size="sm" onPress={clearFiles}>
               Cancel
             </Button>
-            <Button size="sm" variant="destructive" onPress={close}>
+            <Button size="sm" variant="destructive" onPress={clearFiles}>
               Delete
             </Button>
           </DialogFooter>
@@ -44,30 +44,4 @@ export default function FileTreeToolbarResetButton() {
       </DialogOverlay>
     </DialogTrigger>
   );
-}
-
-{
-  /* <DialogTrigger>
-<Button variant="outline">Delete...</Button>
-<DialogOverlay isDismissable={false}>
-  <DialogContent role="alertdialog" className="sm:max-w-[425px]">
-    {({ close }) => (
-      <>
-        <DialogHeader>
-          <DialogTitle>Delete file</DialogTitle>
-        </DialogHeader>
-        <DialogDescription>
-          This will permanently delete the selected file. Continue?
-        </DialogDescription>
-        <DialogFooter>
-          <Button onPress={close}>Cancel</Button>
-          <Button variant="destructive" onPress={close}>
-            Delete
-          </Button>
-        </DialogFooter>
-      </>
-    )}
-  </DialogContent>
-</DialogOverlay>
-</DialogTrigger> */
 }
