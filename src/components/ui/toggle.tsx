@@ -1,14 +1,14 @@
-"use client"
+"use client";
 
-import * as React from "react"
-import { cva, type VariantProps } from "class-variance-authority"
+import * as React from "react";
+import { cva, type VariantProps } from "class-variance-authority";
 import {
   ToggleButton as AriaToggleButton,
   composeRenderProps,
   type ToggleButtonProps as AriaToggleButtonProps,
-} from "react-aria-components"
+} from "react-aria-components";
 
-import { cn } from "@/lib/utils"
+import { cn } from "@/lib/utils";
 
 const toggleVariants = cva(
   [
@@ -32,7 +32,7 @@ const toggleVariants = cva(
           "border border-input bg-transparent data-[hovered]:bg-accent data-[hovered]:text-accent-foreground",
       },
       size: {
-        default: "h-10 px-3",
+        default: "h-10",
         sm: "h-9 px-2.5",
         lg: "h-11 px-5",
       },
@@ -41,8 +41,8 @@ const toggleVariants = cva(
       variant: "default",
       size: "default",
     },
-  }
-)
+  },
+);
 
 interface ToggleProps
   extends AriaToggleButtonProps,
@@ -56,12 +56,12 @@ const Toggle = ({ className, variant, size, ...props }: ToggleProps) => (
           variant,
           size,
           className,
-        })
-      )
+        }),
+      ),
     )}
     {...props}
   />
-)
+);
 
-export { Toggle, toggleVariants }
-export type { ToggleProps }
+export { Toggle, toggleVariants };
+export type { ToggleProps };

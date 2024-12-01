@@ -3,9 +3,12 @@ import useFileStore from "@/lib/store/files";
 import { Toggle } from "@/components/ui/toggle";
 import { useQueryClient } from "@tanstack/react-query";
 import getTags from "@/lib/get-tags";
+import { Checkbox } from "@/components/ui/checkbox";
+import useModeStore from "@/lib/store/mode";
 
 export default function FileTree() {
   const { files, setSelectedFile, selectedFile } = useFileStore();
+  const { mode } = useModeStore();
   const queryClient = useQueryClient();
 
   async function handleToggle(
@@ -26,13 +29,15 @@ export default function FileTree() {
   }
 
   return files.map((file) => (
-    <Toggle
-      key={file.name}
-      isSelected={selectedFile?.name === file.name}
-      onChange={(pressed) => handleToggle(pressed, file)}
-      className="mx-4 h-fit cursor-pointer select-none justify-normal py-1 text-left text-sm text-foreground"
-    >
-      {file.name}
-    </Toggle>
+    <div key={file.name} className="mx-4 flex items-center gap-2">
+      {mode.checkbox && <Checkbox />}
+      <Toggle
+        isSelected={selectedFile?.name === file.name}
+        onChange={(pressed) => handleToggle(pressed, file)}
+        className="h-fit w-full cursor-pointer select-none justify-normal px-2 py-1 text-left text-sm text-foreground"
+      >
+        {file.name}
+      </Toggle>
+    </div>
   ));
 }

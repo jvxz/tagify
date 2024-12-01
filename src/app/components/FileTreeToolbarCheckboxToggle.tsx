@@ -1,5 +1,20 @@
-import { Checkbox } from "@/components/ui/checkbox";
+import { Toggle } from "@/components/ui/toggle";
+import useFileStore from "@/lib/store/files";
+import useModeStore from "@/lib/store/mode";
+import { SquareMousePointer } from "lucide-react";
 
 export default function FileTreeToolbarCheckboxToggle() {
-  return <Checkbox id="terms" />;
+  const { files } = useFileStore();
+  const { mode, setMode } = useModeStore();
+
+  return (
+    <Toggle
+      isDisabled={files.length === 0}
+      variant="outline"
+      className="aspect-square ring-foreground transition-all data-[selected]:ring-2"
+      onChange={(e) => setMode({ ...mode, checkbox: e })}
+    >
+      <SquareMousePointer className="size-5" />
+    </Toggle>
+  );
 }
