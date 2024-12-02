@@ -23,6 +23,7 @@ export default function FileEditorPanel() {
           {selectedFile?.tags?.format?.duration &&
             formatDuration(selectedFile.tags.format.duration)}
         </p>
+
         <div className="flex items-center gap-2">
           <Button isDisabled={!selectedFile} variant="destructive" size="sm">
             discard
