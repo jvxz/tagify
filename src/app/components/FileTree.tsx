@@ -34,7 +34,7 @@ export default function FileTree() {
       <Toggle
         isSelected={selectedFile?.name === file.name}
         onChange={(pressed) => handleToggle(pressed, file)}
-        className="h-fit w-full cursor-pointer select-none justify-normal px-2 py-1 text-left text-sm text-foreground"
+        className="motion-preset-slide-down-sm h-fit w-full cursor-pointer select-none justify-normal px-2 py-1 text-left text-sm text-foreground"
       >
         {file.name}
       </Toggle>

@@ -39,6 +39,7 @@
     "tailwind-merge": "^2.5.5",
     "tailwind-variants": "^0.3.0",
     "tailwindcss-animate": "^1.0.7",
+    "tailwindcss-motion": "^0.4.3-beta",
     "zod": "^3.23.3",
     "zustand": "^5.0.1"
   },
