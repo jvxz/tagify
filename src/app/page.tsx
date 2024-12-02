@@ -13,7 +13,7 @@ export default function Page() {
         className="min-w-[350px]"
         minSize={25}
         maxSize={50}
-        defaultSize={25}
+        defaultSize={30}
       >
         <FileTreePanel />
       </ResizablePanel>

@@ -1,7 +1,5 @@
 import { JollyTextField } from "@/components/ui/textfield";
 import useFileStore from "@/lib/store/files";
-import { Image as ImageIcon } from "lucide-react";
-import Image from "next/image";
 import { useEffect, useState } from "react";
 import { Form } from "react-aria-components";
 import FileEditorPanelFormImage from "./FileEditorPanelFormImage";
@@ -17,6 +15,7 @@ export default function FileEditorPanelForm() {
     discNumber: number;
     totalDiscs: number;
     genre: () => string | undefined;
+    comments: () => string | undefined;
   }>({
     artist: "",
     title: "",
@@ -27,6 +26,7 @@ export default function FileEditorPanelForm() {
     discNumber: 0,
     totalDiscs: 0,
     genre: () => "",
+    comments: () => "",
   });
   const { selectedFile } = useFileStore();
 
@@ -45,6 +45,15 @@ export default function FileEditorPanelForm() {
         return selectedFile.tags?.common.genre;
       };
 
+      const comments = () => {
+        if (Array.isArray(selectedFile.tags?.common.comment)) {
+          return selectedFile.tags?.common.comment
+            .map((comment) => comment.text)
+            .join(", ");
+        }
+        return selectedFile.tags?.common.comment;
+      };
+
       setFormData({
         artist: selectedFile.tags?.common.artist ?? "",
         title: selectedFile.tags?.common.title ?? "",
@@ -55,6 +64,7 @@ export default function FileEditorPanelForm() {
         totalDiscs: selectedFile.tags?.common.disk.of ?? 0,
         genre: genre,
         discNumber: selectedFile.tags?.common.disk.no ?? 0,
+        comments: comments,
       });
     }
   }, [selectedFile]);
@@ -82,6 +92,16 @@ export default function FileEditorPanelForm() {
           />
           <JollyTextField name="album" label="album" value={formData.album} />
         </div>
+        <div className="grid w-full grid-cols-2">
+          <JollyTextField name="composer" label="composer" />
+          <div></div>
+        </div>
+        <JollyTextField
+          textArea
+          name="comments"
+          label="comments"
+          value={formData.comments()}
+        />
       </div>
       <div className="flex flex-col gap-4">
         <FileEditorPanelFormImage />
