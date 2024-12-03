@@ -12,9 +12,7 @@ import {
   composeRenderProps,
   Text,
 } from "react-aria-components";
-
 import { cn } from "@/lib/utils";
-
 import { FieldError, Label } from "./field";
 
 const TextField = AriaTextField;
