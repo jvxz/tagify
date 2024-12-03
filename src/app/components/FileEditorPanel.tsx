@@ -12,6 +12,7 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { Label } from "react-aria-components";
+import FileEditorPanelModeDropdown from "./FileEditorPanelModeDropdown";
 export default function FileEditorPanel() {
   const { selectedFile } = useFileStore();
   const { mode } = useModeStore();
@@ -50,22 +51,7 @@ export default function FileEditorPanel() {
         </div>
 
         <div className="flex items-center gap-2">
-          <Select
-            defaultSelectedKey="Basic"
-            className="w-[200px]"
-            placeholder="Select an animal"
-          >
-            <SelectTrigger>
-              <SelectValue />
-            </SelectTrigger>
-            <SelectPopover>
-              <SelectListBox>
-                <SelectItem key="basic">Basic</SelectItem>
-                <SelectItem key="extended">Extended</SelectItem>
-                <SelectItem key="raw">Raw</SelectItem>
-              </SelectListBox>
-            </SelectPopover>
-          </Select>
+          <FileEditorPanelModeDropdown />
         </div>
       </div>
       <FileEditorPanelForm />

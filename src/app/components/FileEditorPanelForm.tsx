@@ -173,6 +173,7 @@ export default function FileEditorPanelForm() {
           value={formData.grouping}
         />
         <JollyTextField
+          className="max-h-[350px]"
           onChange={(value) => handleChange("comments", value)}
           textArea
           name="comments"
