@@ -47,3 +47,5 @@ yarn-error.log*
 
 # reviews
 reviews/*
+# Million Lint
+.million

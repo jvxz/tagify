@@ -6,7 +6,7 @@
   "scripts": {
     "build": "next build",
     "check": "next lint && tsc --noEmit",
-    "dev": "next dev --turbo",
+    "dev": "next dev & npx react-scan@latest localhost:3000",
     "lint": "next lint",
     "lint:fix": "next lint --fix",
     "preview": "next build && next start",
@@ -17,6 +17,7 @@
   },
   "dependencies": {
     "@catamphetamine/id3js": "^1.0.2",
+    "@million/lint": "^1.0.13",
     "@radix-ui/react-dialog": "^1.1.2",
     "@radix-ui/react-scroll-area": "^1.2.1",
     "@radix-ui/react-separator": "^1.1.0",
