@@ -18,7 +18,7 @@ import {
 import { Button } from "@/components/ui/button";
 
 export default function FileTree() {
-  let switchAttempt = {
+  const switchAttempt = {
     name: "",
     file: new File([], ""),
   };
@@ -70,57 +70,15 @@ export default function FileTree() {
         return (
           <div key={file.name} className="mx-4 flex items-center gap-2">
             {mode.checkbox && <Checkbox />}
-            <DialogTrigger>
-              <Toggle
-                isSelected={selectedFile?.name === file.name}
-                onChange={(pressed) => {
-                  if (!mode.edited) {
-                    handleToggle(pressed, file).catch(console.error);
-                  } else {
-                    switchAttempt = { name: file.name, file: file.file };
-                  }
-                }}
-                className="motion-preset-slide-down-sm h-fit w-full cursor-pointer select-none justify-normal px-2 py-1 text-left text-sm text-foreground"
-              >
-                {file.name}
-                {mode.edited && (
-                  <DialogOverlay isDismissable={false}>
-                    <DialogContent
-                      role="alertdialog"
-                      className="sm:max-w-[425px]"
-                    >
-                      {({ close }) => (
-                        <>
-                          <DialogHeader>
-                            <DialogTitle>Switch file</DialogTitle>
-                          </DialogHeader>
-                          <DialogDescription>
-                            There are unsaved changes. Continue?
-                          </DialogDescription>
-                          <DialogFooter>
-                            <Button size="sm" onPress={close}>
-                              Cancel
-                            </Button>
-                            <Button
-                              size="sm"
-                              variant="destructive"
-                              onPress={() => {
-                                close();
-                                handleToggle(true, switchAttempt).catch(
-                                  console.error,
-                                );
-                              }}
-                            >
-                              Switch
-                            </Button>
-                          </DialogFooter>
-                        </>
-                      )}
-                    </DialogContent>
-                  </DialogOverlay>
-                )}
-              </Toggle>
-            </DialogTrigger>
+            <Toggle
+              isSelected={selectedFile?.name === file.name}
+              onChange={(pressed) => {
+                handleToggle(pressed, file).catch(console.error);
+              }}
+              className="motion-preset-slide-down-sm h-fit w-full cursor-pointer select-none justify-normal px-2 py-1 text-left text-sm text-foreground"
+            >
+              {file.name}
+            </Toggle>
           </div>
         );
       });

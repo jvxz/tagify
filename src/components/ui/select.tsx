@@ -1,41 +1,41 @@
-"use client"
+"use client";
 
-import { ChevronDown } from "lucide-react"
+import { ChevronDown } from "lucide-react";
 import {
   Button as AriaButton,
-  ButtonProps as AriaButtonProps,
+  type ButtonProps as AriaButtonProps,
   ListBox as AriaListBox,
-  ListBoxProps as AriaListBoxProps,
-  PopoverProps as AriaPopoverProps,
+  type ListBoxProps as AriaListBoxProps,
+  type PopoverProps as AriaPopoverProps,
   Select as AriaSelect,
-  SelectProps as AriaSelectProps,
+  type SelectProps as AriaSelectProps,
   SelectValue as AriaSelectValue,
-  SelectValueProps as AriaSelectValueProps,
-  ValidationResult as AriaValidationResult,
+  type SelectValueProps as AriaSelectValueProps,
+  type ValidationResult as AriaValidationResult,
   composeRenderProps,
   Text,
-} from "react-aria-components"
+} from "react-aria-components";
 
-import { cn } from "@/lib/utils"
+import { cn } from "@/lib/utils";
 
-import { FieldError, Label } from "./field"
+import { FieldError, Label } from "./field";
 import {
   ListBoxCollection,
   ListBoxHeader,
   ListBoxItem,
   ListBoxSection,
-} from "./list-box"
-import { Popover } from "./popover"
+} from "./list-box";
+import { Popover } from "./popover";
 
-const Select = AriaSelect
+const Select = AriaSelect;
 
-const SelectItem = ListBoxItem
+const SelectItem = ListBoxItem;
 
-const SelectHeader = ListBoxHeader
+const SelectHeader = ListBoxHeader;
 
-const SelectSection = ListBoxSection
+const SelectSection = ListBoxSection;
 
-const SelectCollection = ListBoxCollection
+const SelectCollection = ListBoxCollection;
 
 const SelectValue = <T extends object>({
   className,
@@ -47,12 +47,12 @@ const SelectValue = <T extends object>({
         "line-clamp-1 data-[placeholder]:text-muted-foreground",
         /* Description */
         "[&>[slot=description]]:hidden",
-        className
-      )
+        className,
+      ),
     )}
     {...props}
   />
-)
+);
 
 const SelectTrigger = ({ className, children, ...props }: AriaButtonProps) => (
   <AriaButton
@@ -65,8 +65,8 @@ const SelectTrigger = ({ className, children, ...props }: AriaButtonProps) => (
         "data-[focus-visible]:outline-none data-[focus-visible]:ring-2 data-[focus-visible]:ring-ring data-[focus-visible]:ring-offset-2",
         /* Resets */
         "focus-visible:outline-none",
-        className
-      )
+        className,
+      ),
     )}
     {...props}
   >
@@ -77,16 +77,16 @@ const SelectTrigger = ({ className, children, ...props }: AriaButtonProps) => (
       </>
     ))}
   </AriaButton>
-)
+);
 
 const SelectPopover = ({ className, ...props }: AriaPopoverProps) => (
   <Popover
     className={composeRenderProps(className, (className) =>
-      cn("w-[--trigger-width]", className)
+      cn("w-[--trigger-width]", className),
     )}
     {...props}
   />
-)
+);
 
 const SelectListBox = <T extends object>({
   className,
@@ -96,20 +96,20 @@ const SelectListBox = <T extends object>({
     className={composeRenderProps(className, (className) =>
       cn(
         "max-h-[inherit] overflow-auto p-1 outline-none [clip-path:inset(0_0_0_0_round_calc(var(--radius)-2px))]",
-        className
-      )
+        className,
+      ),
     )}
     {...props}
   />
-)
+);
 
 interface JollySelectProps<T extends object>
   extends Omit<AriaSelectProps<T>, "children"> {
-  label?: string
-  description?: string
-  errorMessage?: string | ((validation: AriaValidationResult) => string)
-  items?: Iterable<T>
-  children: React.ReactNode | ((item: T) => React.ReactNode)
+  label?: string;
+  description?: string;
+  errorMessage?: string | ((validation: AriaValidationResult) => string);
+  items?: Iterable<T>;
+  children: React.ReactNode | ((item: T) => React.ReactNode);
 }
 
 function JollySelect<T extends object>({
@@ -124,11 +124,11 @@ function JollySelect<T extends object>({
   return (
     <Select
       className={composeRenderProps(className, (className) =>
-        cn("group flex flex-col gap-2", className)
+        cn("group flex flex-col gap-2", className),
       )}
       {...props}
     >
-      <Label>{label}</Label>
+      {/* <Label>{label}</Label> */}
       <SelectTrigger>
         <SelectValue />
       </SelectTrigger>
@@ -137,12 +137,12 @@ function JollySelect<T extends object>({
           {description}
         </Text>
       )}
-      <FieldError>{errorMessage}</FieldError>
+      {/* <FieldError>{errorMessage}</FieldError> */}
       <SelectPopover>
         <SelectListBox items={items}>{children}</SelectListBox>
       </SelectPopover>
     </Select>
-  )
+  );
 }
 
 export {
@@ -156,5 +156,5 @@ export {
   SelectSection,
   SelectCollection,
   JollySelect,
-}
-export type { JollySelectProps }
+};
+export type { JollySelectProps };
