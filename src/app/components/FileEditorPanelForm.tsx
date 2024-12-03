@@ -160,18 +160,7 @@ export default function FileEditorPanelForm() {
             onChange={(value) => handleChange("album", value)}
           />
         </div>
-        <JollyTextField
-          onChange={(value) => handleChange("composer", value)}
-          name="composer"
-          label="composer"
-          value={formData.composer()}
-        />
-        <JollyTextField
-          onChange={(value) => handleChange("grouping", value)}
-          name="grouping"
-          label="grouping"
-          value={formData.grouping}
-        />
+
         <JollyTextField
           className="max-h-[350px]"
           onChange={(value) => handleChange("comments", value)}

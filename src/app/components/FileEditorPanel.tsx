@@ -13,6 +13,7 @@ import {
 } from "@/components/ui/select";
 import { Label } from "react-aria-components";
 import FileEditorPanelModeDropdown from "./FileEditorPanelModeDropdown";
+import { Badge } from "@/components/ui/badge";
 export default function FileEditorPanel() {
   const { selectedFile } = useFileStore();
   const { mode } = useModeStore();
@@ -35,20 +36,22 @@ export default function FileEditorPanel() {
         <p className="flex-1 text-xl font-bold">
           {selectedFile?.name ? selectedFile.name : "no file selected"}
         </p>
-        <div className="flex gap-2">
-          {selectedFile && (
-            <p>
+        {selectedFile && (
+          <div className="flex gap-2">
+            <Badge variant="outline">
               {selectedFile?.tags?.format?.duration &&
-                formatDuration(selectedFile.tags.format.duration)}{" "}
-              —{" "}
+                formatDuration(selectedFile.tags.format.duration)}
+            </Badge>
+            <Badge variant="outline">
               {selectedFile?.tags?.format.bitrate &&
-                formatBitrate(selectedFile.tags.format.bitrate)}{" "}
-              —{" "}
+                formatBitrate(selectedFile.tags.format.bitrate)}
+            </Badge>
+            <Badge variant="outline">
               {selectedFile?.tags?.format.sampleRate &&
-                `${selectedFile.tags.format.sampleRate} Hz`}
-            </p>
-          )}
-        </div>
+                `${selectedFile.tags.format.sampleRate} hz`}
+            </Badge>
+          </div>
+        )}
 
         <div className="flex items-center gap-2">
           <FileEditorPanelModeDropdown />
