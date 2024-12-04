@@ -11,6 +11,7 @@ export default function FileTreeToolbarCheckboxToggle() {
     <Toggle
       isDisabled={files.length === 0}
       variant="outline"
+      isSelected={mode.checkbox}
       className="aspect-square ring-foreground transition-all data-[selected]:ring-2"
       onChange={(e) => setMode({ ...mode, checkbox: e })}
     >

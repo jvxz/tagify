@@ -1,6 +1,7 @@
 import useFileStore from "@/lib/store/files";
 import Image from "next/image";
-import { Image as ImageIcon } from "lucide-react";
+import { ImagePlus } from "lucide-react";
+import { Button } from "@/components/ui/button";
 
 export default function FileEditorPanelFormImage() {
   const { selectedFile } = useFileStore();
@@ -19,7 +20,14 @@ export default function FileEditorPanelFormImage() {
   return (
     <div className="grid aspect-square w-full place-items-center rounded-md border-2 border-border">
       {/* eslint-disable-next-line jsx-a11y/alt-text */}
-      <ImageIcon className="size-16 text-border" />
+      <Button
+        isDisabled={!selectedFile}
+        size="icon"
+        variant="ghost"
+        className="size-16 p-1"
+      >
+        <ImagePlus className="size-16 text-border" />
+      </Button>
     </div>
   );
 }

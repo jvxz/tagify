@@ -8,6 +8,7 @@ export default function SidebarDiscardButton() {
 
   return (
     <TooltipButton
+      placement="left"
       variant="destructive"
       tooltip="Discard"
       isDisabled={!mode.edited}

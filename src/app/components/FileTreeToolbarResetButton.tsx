@@ -11,10 +11,11 @@ import {
   DialogTitle,
 } from "@/components/ui/dialog";
 import { TooltipButton } from "@/components/ui/tooltip-button";
+import useModeStore from "@/lib/store/mode";
 
 export default function FileTreeToolbarResetButton() {
   const { files, clearFiles, setSelectedFile } = useFileStore();
-
+  const { mode, setMode } = useModeStore();
   return (
     <DialogTrigger>
       <TooltipButton isDisabled={files.length === 0} tooltip="Reset">
@@ -39,6 +40,11 @@ export default function FileTreeToolbarResetButton() {
                   size="sm"
                   variant="destructive"
                   onPress={() => {
+                    setMode({
+                      ...mode,
+                      checkbox: false,
+                      edited: false,
+                    });
                     clearFiles();
                     setSelectedFile(null);
                     close();
