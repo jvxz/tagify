@@ -4,8 +4,6 @@ import { useEffect, useRef, useState } from "react";
 import { Form } from "react-aria-components";
 import FileEditorPanelFormImage from "./FileEditorPanelFormImage";
 import useModeStore from "@/lib/store/mode";
-import { Tabs, Tab, TabList } from "@/components/ui/tabs";
-import { Button } from "@/components/ui/button";
 
 export default function FileEditorPanelForm() {
   const formRef = useRef<HTMLFormElement>(null);
@@ -125,13 +123,6 @@ export default function FileEditorPanelForm() {
       onSubmit={() => console.log(formData)}
     >
       <div className="motion-preset-fade flex w-full flex-col gap-4">
-        {/* <Tabs>
-          <TabList className="flex *:flex-1" aria-label="Form Type">
-            <Tab id="basic">Basic</Tab>
-            <Tab id="extended">Extended</Tab>
-            <Tab id="raw">Raw</Tab>
-          </TabList>
-        </Tabs> */}
         <div className="flex gap-4 *:flex-1">
           <JollyTextField
             name="artist"
@@ -171,14 +162,6 @@ export default function FileEditorPanelForm() {
         />
       </div>
       <div className="flex flex-col gap-4">
-        {/* <div className="flex gap-2 *:flex-1">
-          <Button isDisabled={!mode.edited} size="sm" variant="destructive">
-            discard
-          </Button>
-          <Button isDisabled={!mode.edited} size="sm">
-            save
-          </Button>
-        </div> */}
         <FileEditorPanelFormImage />
         <div className="flex gap-4">
           <JollyTextField
