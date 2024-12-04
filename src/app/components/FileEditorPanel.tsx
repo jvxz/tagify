@@ -46,18 +46,6 @@ export default function FileEditorPanel() {
             <Badge variant="outline">
               {data?.format.sampleRate && `${data.format.sampleRate} hz`}
             </Badge>
-            {/* <Badge variant="outline">
-              {selectedFile?.tags?.format?.duration &&
-                formatDuration(selectedFile.tags.format.duration)}
-            </Badge>
-            <Badge variant="outline">
-              {selectedFile?.tags?.format.bitrate &&
-                formatBitrate(selectedFile.tags.format.bitrate)}
-            </Badge>
-            <Badge variant="outline">
-              {selectedFile?.tags?.format.sampleRate &&
-                `${selectedFile.tags.format.sampleRate} hz`}
-            </Badge> */}
           </div>
         )}
 
@@ -65,7 +53,7 @@ export default function FileEditorPanel() {
           <FileEditorPanelModeDropdown />
         </div>
       </div>
-      <FileEditorPanelForm />
+      <FileEditorPanelForm data={data} />
     </div>
   );
 }
