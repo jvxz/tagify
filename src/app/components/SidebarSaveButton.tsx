@@ -12,6 +12,7 @@ export default function SidebarSaveButton() {
         console.log("save");
       }}
       isDisabled={!mode.edited}
+      placement="left"
       tooltip="Save"
       variant="default"
     >
