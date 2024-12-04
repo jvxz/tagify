@@ -24,9 +24,9 @@ export default function RootLayout({
       <Providers>
         <body className="flex h-screen">
           <Dropover />
-          <Sidebar />
 
           {children}
+          <Sidebar />
         </body>
       </Providers>
     </html>
