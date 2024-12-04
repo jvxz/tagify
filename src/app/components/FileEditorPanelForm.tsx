@@ -20,6 +20,7 @@ export default function FileEditorPanelForm() {
     comments: () => string | undefined;
     composer: () => string | undefined;
     grouping: string;
+    year: number;
   }>({
     artist: "",
     title: "",
@@ -33,6 +34,7 @@ export default function FileEditorPanelForm() {
     comments: () => "",
     composer: () => "",
     grouping: "",
+    year: 0,
   });
   const { selectedFile } = useFileStore();
   const { mode, setMode } = useModeStore();
@@ -85,6 +87,7 @@ export default function FileEditorPanelForm() {
         comments,
         composer,
         grouping: selectedFile.tags?.common.grouping ?? "",
+        year: selectedFile.tags?.common.year ?? 0,
       });
     } else {
       setFormData({
@@ -100,6 +103,7 @@ export default function FileEditorPanelForm() {
         comments: () => undefined,
         composer: () => undefined,
         grouping: "",
+        year: 0,
       });
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -163,6 +167,12 @@ export default function FileEditorPanelForm() {
       </div>
       <div className="flex flex-col gap-4">
         <FileEditorPanelFormImage />
+        <JollyTextField
+          onChange={(value) => handleChange("year", value)}
+          name="year"
+          label="year"
+          value={formData.year.toString()}
+        />
         <div className="flex gap-4">
           <JollyTextField
             onChange={(value) => handleChange("trackNumber", value)}
