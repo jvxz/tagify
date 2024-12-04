@@ -1,8 +1,6 @@
 "use client";
 import useFileStore from "@/lib/store/files";
 import { Toggle } from "@/components/ui/toggle";
-import { useQueryClient } from "@tanstack/react-query";
-import getTags from "@/lib/get-tags";
 import { Checkbox } from "@/components/ui/checkbox";
 import useModeStore from "@/lib/store/mode";
 import useSearchStore from "@/lib/store/search";
@@ -11,20 +9,13 @@ export default function FileTree() {
   const { files, setSelectedFile, selectedFile } = useFileStore();
   const { mode } = useModeStore();
   const { search } = useSearchStore();
-  const queryClient = useQueryClient();
 
   async function handleToggle(
     pressed: boolean,
     file: { name: string; file: File },
   ) {
     if (pressed) {
-      const result = await queryClient.fetchQuery({
-        queryKey: ["tags", file.name],
-        queryFn: () => getTags(file.file),
-        staleTime: 1000 * 60 * 5,
-      });
-
-      setSelectedFile({ name: file.name, file: file.file, tags: result });
+      setSelectedFile({ name: file.name, file: file.file, tags: null });
     } else {
       setSelectedFile(null);
     }
