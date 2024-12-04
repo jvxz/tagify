@@ -38,6 +38,7 @@ export default function FileEditorPanelForm() {
   });
   const { selectedFile } = useFileStore();
   const { mode, setMode } = useModeStore();
+  const disabled = !selectedFile;
 
   function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
@@ -129,12 +130,14 @@ export default function FileEditorPanelForm() {
       <div className="motion-preset-fade flex w-full flex-col gap-4">
         <div className="flex gap-4 *:flex-1">
           <JollyTextField
+            isDisabled={disabled}
             name="artist"
             label="artist"
             value={formData.artist}
             onChange={(value) => handleChange("artist", value)}
           />
           <JollyTextField
+            isDisabled={disabled}
             name="title"
             label="title"
             value={formData.title}
@@ -143,12 +146,14 @@ export default function FileEditorPanelForm() {
         </div>
         <div className="flex gap-4 *:flex-1">
           <JollyTextField
+            isDisabled={disabled}
             name="album artist"
             label="album artist"
             value={formData.albumArtist}
             onChange={(value) => handleChange("albumArtist", value)}
           />
           <JollyTextField
+            isDisabled={disabled}
             name="album"
             label="album"
             value={formData.album}
@@ -158,6 +163,7 @@ export default function FileEditorPanelForm() {
 
         <JollyTextField
           className="max-h-[350px]"
+          isDisabled={disabled}
           onChange={(value) => handleChange("comments", value)}
           textArea
           name="comments"
@@ -168,6 +174,7 @@ export default function FileEditorPanelForm() {
       <div className="flex flex-col gap-4">
         <FileEditorPanelFormImage />
         <JollyTextField
+          isDisabled={disabled}
           onChange={(value) => handleChange("year", value)}
           name="year"
           label="year"
@@ -175,12 +182,14 @@ export default function FileEditorPanelForm() {
         />
         <div className="flex gap-4">
           <JollyTextField
+            isDisabled={disabled}
             onChange={(value) => handleChange("trackNumber", value)}
             name="track number"
             label="track number"
             value={formData.trackNumber.toString()}
           />
           <JollyTextField
+            isDisabled={disabled}
             onChange={(value) => handleChange("totalTracks", value)}
             name="total tracks"
             label="total tracks"
@@ -188,6 +197,7 @@ export default function FileEditorPanelForm() {
           />
         </div>
         <JollyTextField
+          isDisabled={disabled}
           onChange={(value) => handleChange("genre", value)}
           name="genre"
           label="genre"
@@ -195,12 +205,14 @@ export default function FileEditorPanelForm() {
         />
         <div className="flex gap-4">
           <JollyTextField
+            isDisabled={disabled}
             onChange={(value) => handleChange("discNumber", value)}
             name="disk number"
             label="disk number"
             value={formData.discNumber.toString()}
           />
           <JollyTextField
+            isDisabled={disabled}
             onChange={(value) => handleChange("totalDiscs", value)}
             name="total disks"
             label="total disks"

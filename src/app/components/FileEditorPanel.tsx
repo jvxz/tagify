@@ -3,8 +3,17 @@ import useFileStore from "@/lib/store/files";
 import FileEditorPanelForm from "./FileEditorPanelForm";
 import FileEditorPanelModeDropdown from "./FileEditorPanelModeDropdown";
 import { Badge } from "@/components/ui/badge";
+import { useQuery } from "@tanstack/react-query";
+import getTags from "@/lib/get-tags";
+import { Skeleton } from "@/components/ui/skeleton";
 export default function FileEditorPanel() {
   const { selectedFile } = useFileStore();
+
+  const { data, isLoading } = useQuery({
+    queryKey: ["tags", selectedFile?.name],
+    queryFn: () => (selectedFile ? getTags(selectedFile.file) : null),
+    enabled: !!selectedFile,
+  });
 
   function formatDuration(duration: number) {
     const minutes = Math.floor(duration / 60);
@@ -21,12 +30,23 @@ export default function FileEditorPanel() {
   return (
     <div className="flex flex-col">
       <div className="flex h-16 items-center gap-4 border-b border-border/50 p-4">
-        <p className="flex-1 text-xl font-bold">
-          {selectedFile?.name ? selectedFile.name : "no file selected"}
-        </p>
-        {selectedFile && (
+        {isLoading && <Skeleton className="h-6 w-full" />}
+        {selectedFile && !isLoading && (
+          <p className="motion-preset-fade-sm flex-1">{selectedFile.name}</p>
+        )}
+        {!selectedFile && <p className="flex-1">no file selected</p>}
+        {selectedFile && !isLoading && (
           <div className="flex gap-2">
             <Badge variant="outline">
+              {data?.format.duration && formatDuration(data.format.duration)}
+            </Badge>
+            <Badge variant="outline">
+              {data?.format.bitrate && formatBitrate(data.format.bitrate)}
+            </Badge>
+            <Badge variant="outline">
+              {data?.format.sampleRate && `${data.format.sampleRate} hz`}
+            </Badge>
+            {/* <Badge variant="outline">
               {selectedFile?.tags?.format?.duration &&
                 formatDuration(selectedFile.tags.format.duration)}
             </Badge>
@@ -37,7 +57,7 @@ export default function FileEditorPanel() {
             <Badge variant="outline">
               {selectedFile?.tags?.format.sampleRate &&
                 `${selectedFile.tags.format.sampleRate} hz`}
-            </Badge>
+            </Badge> */}
           </div>
         )}
 
