@@ -4,8 +4,13 @@ import { useEffect, useRef, useState } from "react";
 import { Form } from "react-aria-components";
 import FileEditorPanelFormImage from "./FileEditorPanelFormImage";
 import useModeStore from "@/lib/store/mode";
+import { type IAudioMetadata } from "music-metadata";
 
-export default function FileEditorPanelForm() {
+export default function FileEditorPanelForm({
+  data,
+}: {
+  data: IAudioMetadata | null | undefined;
+}) {
   const formRef = useRef<HTMLFormElement>(null);
   const [formData, setFormData] = useState<{
     artist: string;
@@ -53,42 +58,40 @@ export default function FileEditorPanelForm() {
         edited: false,
       });
       const genre = () => {
-        if (Array.isArray(selectedFile.tags?.common.genre)) {
-          return selectedFile.tags?.common.genre.join(", ");
+        if (Array.isArray(data?.common.genre)) {
+          return data?.common.genre.join(", ");
         }
-        return selectedFile.tags?.common.genre;
+        return data?.common.genre;
       };
 
       const comments = () => {
-        if (Array.isArray(selectedFile.tags?.common.comment)) {
-          return selectedFile.tags?.common.comment
-            .map((comment) => comment.text)
-            .join(", ");
+        if (Array.isArray(data?.common.comment)) {
+          return data?.common.comment.map((comment) => comment.text).join(", ");
         }
-        return selectedFile.tags?.common.comment;
+        return data?.common.comment;
       };
 
       const composer = () => {
-        if (Array.isArray(selectedFile.tags?.common.composer)) {
-          return selectedFile.tags?.common.composer.join(", ");
+        if (Array.isArray(data?.common.composer)) {
+          return data?.common.composer.join(", ");
         }
-        return selectedFile.tags?.common.composer;
+        return data?.common.composer;
       };
 
       setFormData({
-        artist: selectedFile.tags?.common.artist ?? "",
-        title: selectedFile.tags?.common.title ?? "",
-        albumArtist: selectedFile.tags?.common.albumartist ?? "",
-        album: selectedFile.tags?.common.album ?? "",
-        trackNumber: selectedFile.tags?.common.track.no ?? 0,
-        totalTracks: selectedFile.tags?.common.track.of ?? 0,
-        discNumber: selectedFile.tags?.common.disk.no ?? 0,
-        totalDiscs: selectedFile.tags?.common.disk.of ?? 0,
+        artist: data?.common.artist ?? "",
+        title: data?.common.title ?? "",
+        albumArtist: data?.common.albumartist ?? "",
+        album: data?.common.album ?? "",
+        trackNumber: data?.common.track.no ?? 0,
+        totalTracks: data?.common.track.of ?? 0,
+        discNumber: data?.common.disk.no ?? 0,
+        totalDiscs: data?.common.disk.of ?? 0,
         genre,
         comments,
         composer,
-        grouping: selectedFile.tags?.common.grouping ?? "",
-        year: selectedFile.tags?.common.year ?? 0,
+        grouping: data?.common.grouping ?? "",
+        year: data?.common.year ?? 0,
       });
     } else {
       setFormData({
@@ -108,7 +111,7 @@ export default function FileEditorPanelForm() {
       });
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [selectedFile, setMode]);
+  }, [data, setMode]);
 
   function handleChange(name: string, value: string) {
     setFormData({
@@ -172,7 +175,7 @@ export default function FileEditorPanelForm() {
         />
       </div>
       <div className="flex flex-col gap-4">
-        <FileEditorPanelFormImage />
+        <FileEditorPanelFormImage data={data} />
         <JollyTextField
           isDisabled={disabled}
           onChange={(value) => handleChange("year", value)}
