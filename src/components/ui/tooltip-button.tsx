@@ -1,21 +1,30 @@
-import { Button } from "./button";
-import { Tooltip, TooltipTrigger } from "./tooltip";
+import { Button } from "@/components/ui/button";
+import { Tooltip, TooltipTrigger } from "@/components/ui/tooltip";
 
-export default function TooltipButton({
+export function TooltipButton({
   children,
   tooltip,
-  displayDelay = 100,
+  placement = "top",
+  isDisabled = false,
 }: {
   children: React.ReactNode;
   tooltip: string;
-  displayDelay?: number;
+  placement?: "top" | "bottom" | "left" | "right";
+  isDisabled?: boolean;
 }) {
   return (
-    <TooltipTrigger asChild>
-      <Button variant="outline" size="icon" aria-label={tooltip}>
+    <TooltipTrigger delay={200} closeDelay={0}>
+      <Button
+        isDisabled={isDisabled}
+        variant="outline"
+        size="icon"
+        aria-label={tooltip}
+      >
         {children}
       </Button>
-      <Tooltip delayDuration={displayDelay}>{tooltip}</Tooltip>
+      <Tooltip className="pointer-events-none" placement={placement}>
+        {tooltip}
+      </Tooltip>
     </TooltipTrigger>
   );
 }

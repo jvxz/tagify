@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button";
 import { Cog, Download, Info, X } from "lucide-react";
 import ThemeToggle from "./ThemeToggle";
 import useModeStore from "@/lib/store/mode";
+import { TooltipButton } from "@/components/ui/tooltip-button";
 
 export default function Sidebar() {
   const { mode } = useModeStore();
@@ -20,12 +21,15 @@ export default function Sidebar() {
       </div>
       <div className="flex flex-col items-center gap-4">
         <ThemeToggle variant="outline" />
-        <Button variant="outline" size="icon">
+        {/* <Button variant="outline" size="icon">
           <Cog />
-        </Button>
-        <Button variant="outline" size="icon">
-          <Info />
-        </Button>
+        </Button> */}
+        <TooltipButton placement="left" tooltip="Settings">
+          <Cog className="size-5" />
+        </TooltipButton>
+        <TooltipButton placement="left" tooltip="Info">
+          <Info className="size-5" />
+        </TooltipButton>
       </div>
     </div>
   );
