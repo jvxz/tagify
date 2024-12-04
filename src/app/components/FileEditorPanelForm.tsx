@@ -171,14 +171,14 @@ export default function FileEditorPanelForm() {
         />
       </div>
       <div className="flex flex-col gap-4">
-        <div className="flex gap-2 *:flex-1">
+        {/* <div className="flex gap-2 *:flex-1">
           <Button isDisabled={!mode.edited} size="sm" variant="destructive">
             discard
           </Button>
           <Button isDisabled={!mode.edited} size="sm">
             save
           </Button>
-        </div>
+        </div> */}
         <FileEditorPanelFormImage />
         <div className="flex gap-4">
           <JollyTextField

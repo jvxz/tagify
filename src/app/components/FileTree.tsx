@@ -6,23 +6,8 @@ import getTags from "@/lib/get-tags";
 import { Checkbox } from "@/components/ui/checkbox";
 import useModeStore from "@/lib/store/mode";
 import useSearchStore from "@/lib/store/search";
-import {
-  DialogOverlay,
-  DialogContent,
-  DialogHeader,
-  DialogTitle,
-  DialogDescription,
-  DialogFooter,
-  DialogTrigger,
-} from "@/components/ui/dialog";
-import { Button } from "@/components/ui/button";
 
 export default function FileTree() {
-  const switchAttempt = {
-    name: "",
-    file: new File([], ""),
-  };
-
   const { files, setSelectedFile, selectedFile } = useFileStore();
   const { mode } = useModeStore();
   const { search } = useSearchStore();
