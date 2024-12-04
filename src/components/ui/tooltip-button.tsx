@@ -1,4 +1,4 @@
-import { Button } from "@/components/ui/button";
+import { Button, type ButtonProps } from "@/components/ui/button";
 import { Tooltip, TooltipTrigger } from "@/components/ui/tooltip";
 
 export function TooltipButton({
@@ -6,19 +6,23 @@ export function TooltipButton({
   tooltip,
   placement = "top",
   isDisabled = false,
+  variant = "outline",
+  ...buttonProps
 }: {
   children: React.ReactNode;
   tooltip: string;
   placement?: "top" | "bottom" | "left" | "right";
   isDisabled?: boolean;
-}) {
+  variant?: "default" | "destructive" | "outline" | "secondary" | "ghost";
+} & Omit<ButtonProps, "children" | "variant" | "isDisabled">) {
   return (
     <TooltipTrigger delay={200} closeDelay={0}>
       <Button
         isDisabled={isDisabled}
-        variant="outline"
+        variant={variant}
         size="icon"
         aria-label={tooltip}
+        {...buttonProps}
       >
         {children}
       </Button>

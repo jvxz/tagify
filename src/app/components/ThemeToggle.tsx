@@ -24,7 +24,11 @@ export default function ThemeToggle({
       size="icon"
       variant={variant}
     >
-      {resolvedTheme === "dark" ? <Sun /> : <Moon />}
+      {resolvedTheme === "dark" ? (
+        <Sun className="size-5" />
+      ) : (
+        <Moon className="size-5" />
+      )}
     </Button>
   );
 }
