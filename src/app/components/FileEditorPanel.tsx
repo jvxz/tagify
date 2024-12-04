@@ -1,22 +1,10 @@
 "use client";
 import useFileStore from "@/lib/store/files";
-import { Button } from "@/components/ui/button";
 import FileEditorPanelForm from "./FileEditorPanelForm";
-import useModeStore from "@/lib/store/mode";
-import {
-  Select,
-  SelectItem,
-  SelectListBox,
-  SelectPopover,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select";
-import { Label } from "react-aria-components";
 import FileEditorPanelModeDropdown from "./FileEditorPanelModeDropdown";
 import { Badge } from "@/components/ui/badge";
 export default function FileEditorPanel() {
   const { selectedFile } = useFileStore();
-  const { mode } = useModeStore();
 
   function formatDuration(duration: number) {
     const minutes = Math.floor(duration / 60);

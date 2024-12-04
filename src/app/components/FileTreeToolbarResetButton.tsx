@@ -10,36 +10,45 @@ import {
   DialogOverlay,
   DialogTitle,
 } from "@/components/ui/dialog";
+import { TooltipButton } from "@/components/ui/tooltip-button";
 
 export default function FileTreeToolbarResetButton() {
-  const { files, clearFiles } = useFileStore();
+  const { files, clearFiles, setSelectedFile } = useFileStore();
 
   return (
     <DialogTrigger>
-      <Button
-        isDisabled={files.length === 0}
-        variant="outline"
-        size="icon"
-        // onPress={clearFiles}
-      >
+      <TooltipButton isDisabled={files.length === 0} tooltip="Reset">
         <RefreshCcw className="size-5" />
-      </Button>
-      <DialogOverlay isDismissable={false}>
+      </TooltipButton>
+      <DialogOverlay isDismissable>
         <DialogContent>
-          <DialogHeader>
-            <DialogTitle>Unload all files</DialogTitle>
-          </DialogHeader>
-          <DialogDescription>
-            You are trying to unload all files. This action cannot be undone.
-          </DialogDescription>
-          <DialogFooter>
-            <Button size="sm" onPress={clearFiles}>
-              Cancel
-            </Button>
-            <Button size="sm" variant="destructive" onPress={clearFiles}>
-              Delete
-            </Button>
-          </DialogFooter>
+          {({ close }) => (
+            <>
+              <DialogHeader>
+                <DialogTitle>Reset files</DialogTitle>
+              </DialogHeader>
+              <DialogDescription>
+                You are trying to unload all files. This action cannot be
+                undone.
+              </DialogDescription>
+              <DialogFooter>
+                <Button size="sm" onPress={close}>
+                  Cancel
+                </Button>
+                <Button
+                  size="sm"
+                  variant="destructive"
+                  onPress={() => {
+                    clearFiles();
+                    setSelectedFile(null);
+                    close();
+                  }}
+                >
+                  Reset
+                </Button>
+              </DialogFooter>
+            </>
+          )}
         </DialogContent>
       </DialogOverlay>
     </DialogTrigger>
