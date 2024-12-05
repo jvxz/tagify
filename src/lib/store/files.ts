@@ -1,18 +1,18 @@
 import { create } from 'zustand'
-import { type IAudioMetadata } from 'music-metadata';
+import { type Tags } from '../types';
 
 interface FileState {
     files: {
         name: string;
         file: File;
     }[]
-    selectedFile: { name: string; file: File; tags: IAudioMetadata | null } | null
+    selectedFile: { name: string; file: File; tags: Tags | null } | null
     addFile: (file: { name: string; file: File }) => void;
     addFiles: (files: { name: string; file: File }[]) => void;
     removeFile: (file: { name: string; file: File }) => void;
     removeFiles: (files: { name: string; file: File }[]) => void;
     clearFiles: () => void;
-    setSelectedFile: (file: { name: string; file: File; tags: IAudioMetadata | null } | null) => void;
+    setSelectedFile: (file: { name: string; file: File; tags: Tags | null } | null) => void;
 }
 
 const useFileStore = create<FileState>((set) => ({
