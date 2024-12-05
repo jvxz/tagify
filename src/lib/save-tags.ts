@@ -1,5 +1,6 @@
 import { ID3Writer } from 'browser-id3-writer';
 import { type Tags } from './types';
+import { saveAs } from 'file-saver';
 
 export default async function saveTags(file: File, tags: Tags) {
     const arrayBuffer = await file.arrayBuffer();
@@ -13,5 +14,6 @@ export default async function saveTags(file: File, tags: Tags) {
 
     const blob = writer.getBlob();
     const url = writer.getURL();
+    saveAs(blob, file.name);
     return { blob, url };
 }
