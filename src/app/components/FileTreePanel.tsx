@@ -9,10 +9,12 @@ export default function FileTreePanel() {
         <p className="text-xl font-bold">tagify</p>
         <p>v0.0.1</p>
       </div>
-      <FileTreeToolbar />
-      <ScrollArea className="flex flex-col gap-2">
-        <FileTree />
-      </ScrollArea>
+      <div className="motion-preset-fade-sm">
+        <FileTreeToolbar />
+        <ScrollArea className="flex flex-col gap-2">
+          <FileTree />
+        </ScrollArea>
+      </div>
     </div>
   );
 }

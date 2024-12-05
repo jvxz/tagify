@@ -13,21 +13,6 @@ export default function FileEditorPanelForm({
   data: IAudioMetadata | null | undefined;
 }) {
   const formRef = useRef<HTMLFormElement>(null);
-  // const [formData, setFormData] = useState<Tags>({
-  //   artist: "",
-  //   title: "",
-  //   albumArtist: "",
-  //   album: "",
-  //   trackNumber: 0,
-  //   totalTracks: 0,
-  //   discNumber: 0,
-  //   totalDiscs: 0,
-  //   genre: () => "",
-  //   comments: () => "",
-  //   composer: () => "",
-  //   grouping: "",
-  //   year: 0,
-  // });
   const { selectedFile, setSelectedFile } = useFileStore();
   const { mode, setMode } = useModeStore();
   const disabled = !selectedFile;
@@ -104,10 +89,10 @@ export default function FileEditorPanelForm({
   return (
     <Form
       ref={formRef}
-      className="flex w-full flex-row gap-4 p-4"
+      className="motion-preset-fade-sm flex w-full flex-row gap-4 p-4"
       onSubmit={() => console.log(selectedFile)}
     >
-      <div className="motion-preset-fade flex w-full flex-col gap-4">
+      <div className="flex w-full flex-col gap-4">
         <div className="flex gap-4 *:flex-1">
           <JollyTextField
             isDisabled={disabled}
