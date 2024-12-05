@@ -4,6 +4,7 @@ import Providers from "./components/Providers";
 import Sidebar from "./components/Sidebar";
 import Dropover from "./components/Dropover";
 import localFont from "next/font/local";
+import { Toaster } from "@/components/ui/toaster";
 
 const Hedvig_Letters = localFont({
   src: "../styles/fonts/HedvigLettersSans-Regular.woff2",
@@ -24,6 +25,7 @@ export default function RootLayout({
       <Providers>
         <body className="flex h-screen">
           <Dropover />
+          <Toaster />
 
           {children}
           <Sidebar />
