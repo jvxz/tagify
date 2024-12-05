@@ -5,6 +5,7 @@ import { Form } from "react-aria-components";
 import FileEditorPanelFormImage from "./FileEditorPanelFormImage";
 import useModeStore from "@/lib/store/mode";
 import { type IAudioMetadata } from "music-metadata";
+import { type Tags } from "@/lib/types";
 
 export default function FileEditorPanelForm({
   data,
@@ -12,21 +13,7 @@ export default function FileEditorPanelForm({
   data: IAudioMetadata | null | undefined;
 }) {
   const formRef = useRef<HTMLFormElement>(null);
-  const [formData, setFormData] = useState<{
-    artist: string;
-    title: string;
-    albumArtist: string;
-    album: string;
-    trackNumber: number;
-    totalTracks: number;
-    discNumber: number;
-    totalDiscs: number;
-    genre: () => string | undefined;
-    comments: () => string | undefined;
-    composer: () => string | undefined;
-    grouping: string;
-    year: number;
-  }>({
+  const [formData, setFormData] = useState<Tags>({
     artist: "",
     title: "",
     albumArtist: "",
@@ -181,7 +168,7 @@ export default function FileEditorPanelForm({
           onChange={(value) => handleChange("year", value)}
           name="year"
           label="year"
-          value={formData.year.toString()}
+          value={formData.year?.toString() ?? ""}
         />
         <div className="flex gap-4">
           <JollyTextField
@@ -189,14 +176,14 @@ export default function FileEditorPanelForm({
             onChange={(value) => handleChange("trackNumber", value)}
             name="track number"
             label="track number"
-            value={formData.trackNumber.toString()}
+            value={formData.trackNumber?.toString() ?? ""}
           />
           <JollyTextField
             isDisabled={disabled}
             onChange={(value) => handleChange("totalTracks", value)}
             name="total tracks"
             label="total tracks"
-            value={formData.totalTracks.toString()}
+            value={formData.totalTracks?.toString() ?? ""}
           />
         </div>
         <JollyTextField
@@ -212,14 +199,14 @@ export default function FileEditorPanelForm({
             onChange={(value) => handleChange("discNumber", value)}
             name="disk number"
             label="disk number"
-            value={formData.discNumber.toString()}
+            value={formData.discNumber?.toString() ?? ""}
           />
           <JollyTextField
             isDisabled={disabled}
             onChange={(value) => handleChange("totalDiscs", value)}
             name="total disks"
             label="total disks"
-            value={formData.totalDiscs.toString()}
+            value={formData.totalDiscs?.toString() ?? ""}
           />
         </div>
       </div>
