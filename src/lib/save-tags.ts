@@ -14,17 +14,38 @@ export default async function saveTags(file: File, tags: Tags, name: string) {
         writer.setFrame("TPE1", [tags.artist]);
     }
 
-    if (tags.year) {
-        writer.setFrame("TYER", tags.year);
+    if (tags.albumArtist) {
+        writer.setFrame("TPE2", tags.albumArtist);
     }
 
     if (tags.album) {
         writer.setFrame("TALB", tags.album);
     }
 
-    // if (tags.genre) {
-    //     writer.setFrame("TCON", [tags.genre!]);
-    // }
+    if (tags.trackNumber) {
+        writer.setFrame("TRCK", tags.trackNumber.toString());
+    }
+
+    if (tags.discNumber) {
+        writer.setFrame("TPOS", tags.discNumber.toString());
+    }
+
+    if (tags.year) {
+        writer.setFrame("TYER", tags.year);
+    }
+
+    const genre = tags.genre();
+    if (genre) {
+        writer.setFrame("TCON", [genre]);
+    }
+
+    if (Array.isArray(tags.comments) && tags.comments.length > 0) {
+        writer.setFrame("COMM", {
+            text: tags.comments[0] as string,
+            description: "desc",
+            language: "eng",
+        });
+    }
 
     writer.addTag();
 

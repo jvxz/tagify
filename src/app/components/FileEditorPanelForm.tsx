@@ -136,7 +136,7 @@ export default function FileEditorPanelForm({
           value={selectedFile?.tags?.comments()}
         />
       </div>
-      <div className="flex flex-col gap-4">
+      <div className="flex w-2/5 flex-col gap-4">
         <FileEditorPanelFormImage data={data} />
         <JollyTextField
           isDisabled={disabled}
@@ -145,22 +145,6 @@ export default function FileEditorPanelForm({
           label="year"
           value={selectedFile?.tags?.year?.toString() ?? ""}
         />
-        <div className="flex gap-4">
-          <JollyTextField
-            isDisabled={disabled}
-            onChange={(value) => handleChange("trackNumber", value)}
-            name="track number"
-            label="track number"
-            value={selectedFile?.tags?.trackNumber?.toString() ?? ""}
-          />
-          <JollyTextField
-            isDisabled={disabled}
-            onChange={(value) => handleChange("totalTracks", value)}
-            name="total tracks"
-            label="total tracks"
-            value={selectedFile?.tags?.totalTracks?.toString() ?? ""}
-          />
-        </div>
         <JollyTextField
           isDisabled={disabled}
           onChange={(value) => handleChange("genre", value)}
@@ -168,22 +152,38 @@ export default function FileEditorPanelForm({
           label="genre"
           value={selectedFile?.tags?.genre()}
         />
-        <div className="flex gap-4">
-          <JollyTextField
+        {/* <div className="flex gap-4"> */}
+        <JollyTextField
+          isDisabled={disabled}
+          onChange={(value) => handleChange("trackNumber", value)}
+          name="track number"
+          label="track number"
+          value={selectedFile?.tags?.trackNumber?.toString() ?? ""}
+        />
+        {/* <JollyTextField
             isDisabled={disabled}
-            onChange={(value) => handleChange("discNumber", value)}
-            name="disk number"
-            label="disk number"
-            value={selectedFile?.tags?.discNumber?.toString() ?? ""}
-          />
-          <JollyTextField
+            onChange={(value) => handleChange("totalTracks", value)}
+            name="total tracks"
+            label="total tracks"
+            value={selectedFile?.tags?.totalTracks?.toString() ?? ""}
+          /> */}
+        {/* </div> */}
+        <JollyTextField
+          isDisabled={disabled}
+          onChange={(value) => handleChange("discNumber", value)}
+          name="disk number"
+          label="disk number"
+          value={selectedFile?.tags?.discNumber?.toString() ?? ""}
+        />
+        {/* <div className="flex gap-4"> */}
+        {/* <JollyTextField
             isDisabled={disabled}
             onChange={(value) => handleChange("totalDiscs", value)}
             name="total disks"
             label="total disks"
             value={selectedFile?.tags?.totalDiscs?.toString() ?? ""}
-          />
-        </div>
+          /> */}
+        {/* </div> */}
       </div>
     </Form>
   );
