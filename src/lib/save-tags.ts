@@ -15,8 +15,16 @@ export default async function saveTags(file: File, tags: Tags, name: string) {
     }
 
     if (tags.year) {
-        writer.setFrame("TTYE", tags.year);
+        writer.setFrame("TYER", tags.year);
     }
+
+    if (tags.album) {
+        writer.setFrame("TALB", tags.album);
+    }
+
+    // if (tags.genre) {
+    //     writer.setFrame("TCON", [tags.genre!]);
+    // }
 
     writer.addTag();
 
