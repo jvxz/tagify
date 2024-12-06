@@ -165,7 +165,7 @@ const DialogDescription = ({
 )
 
 export {
-  Dialog,
+  
   DialogOverlay,
   DialogTrigger,
   DialogContent,
@@ -174,4 +174,3 @@ export {
   DialogFooter,
   DialogTitle,
 }
-export type { DialogContentProps }

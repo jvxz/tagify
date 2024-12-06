@@ -5,7 +5,7 @@ import useFileStore from "@/lib/store/files";
 import { TooltipButton } from "@/components/ui/tooltip-button";
 import { Import } from "lucide-react";
 
-export function FileSelect() {
+function FileSelect() {
   const { addFiles } = useFileStore();
   return (
     <FileTrigger
