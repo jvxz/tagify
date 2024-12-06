@@ -91,5 +91,4 @@ function JollyTextField({
   );
 }
 
-export { Input, TextField, JollyTextField, TextArea };
-export type { JollyTextFieldProps };
+export {  TextField, JollyTextField,  };;

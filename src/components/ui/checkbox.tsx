@@ -97,5 +97,4 @@ function JollyCheckboxGroup({
   );
 }
 
-export { Checkbox, CheckboxGroup, JollyCheckboxGroup };
-export type { JollyCheckboxGroupProps };
+export { Checkbox,   };;

@@ -151,10 +151,9 @@ export {
   SelectTrigger,
   SelectItem,
   SelectPopover,
-  SelectHeader,
+  
   SelectListBox,
-  SelectSection,
-  SelectCollection,
+  
+  
   JollySelect,
-};
-export type { JollySelectProps };
+};;

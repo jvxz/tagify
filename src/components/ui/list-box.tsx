@@ -90,7 +90,7 @@ function ListBoxHeader({
 }
 
 export {
-  ListBox,
+  
   ListBoxItem,
   ListBoxHeader,
   ListBoxSection,
