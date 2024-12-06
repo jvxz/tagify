@@ -12,10 +12,13 @@ import {
 } from "@/components/ui/dialog";
 import { TooltipButton } from "@/components/ui/tooltip-button";
 import useModeStore from "@/lib/store/mode";
+import { useQueryClient } from "@tanstack/react-query";
 
 export default function FileTreeToolbarResetButton() {
   const { files, clearFiles, setSelectedFile } = useFileStore();
   const { mode, setMode } = useModeStore();
+  const queryClient = useQueryClient();
+
   return (
     <DialogTrigger>
       <TooltipButton isDisabled={files.length === 0} tooltip="Reset">
@@ -47,6 +50,7 @@ export default function FileTreeToolbarResetButton() {
                     });
                     clearFiles();
                     setSelectedFile(null);
+                    queryClient.removeQueries({ queryKey: ["files"] });
                     close();
                   }}
                 >

@@ -49,9 +49,9 @@ export default function FileEditorPanel() {
           </div>
         )}
 
-        <div className="flex items-center gap-2">
+        {/* <div className="flex items-center gap-2">
           <FileEditorPanelModeDropdown />
-        </div>
+        </div> */}
       </div>
       <FileEditorPanelForm data={data} />
     </div>
