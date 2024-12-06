@@ -10,6 +10,14 @@ export default async function saveTags(file: File, tags: Tags, name: string) {
         writer.setFrame("TIT2", tags.title);
     }
 
+    if (tags.artist) {
+        writer.setFrame("TPE1", [tags.artist]);
+    }
+
+    if (tags.year) {
+        writer.setFrame("TTYE", tags.year);
+    }
+
     writer.addTag();
 
     const blob = writer.getBlob();
