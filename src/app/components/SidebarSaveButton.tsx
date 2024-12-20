@@ -13,9 +13,7 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog";
-import { Input } from "@/components/ui/input";
-import { JollyTextField, TextField } from "@/components/ui/textfield";
-import { Label } from "@/components/ui/field";
+import { JollyTextField } from "@/components/ui/textfield";
 import { Button } from "@/components/ui/button";
 import { type FormEvent, useEffect, useState } from "react";
 import { Form } from "react-aria-components";
@@ -38,7 +36,7 @@ export default function SidebarSaveButton() {
       title: "Saving edited file...",
     });
     setMode({ ...mode, saving: true });
-    await saveTags(selectedFile.file, selectedFile.tags!, name ?? "untitled")
+    await saveTags(selectedFile.file, selectedFile.tags!, name!)
       .then((res) => {
         console.log(res);
       })
