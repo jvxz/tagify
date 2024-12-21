@@ -1,7 +1,7 @@
 "use client";
 import useFileStore from "@/lib/store/files";
 import FileEditorPanelForm from "./FileEditorPanelForm";
-import FileEditorPanelModeDropdown from "./FileEditorPanelModeDropdown";
+import FileEditorPanelModeArrows from "./FileEditorPanelModeArrows";
 import { Badge } from "@/components/ui/badge";
 import { useQuery } from "@tanstack/react-query";
 import getTags from "@/lib/get-tags";
@@ -50,7 +50,7 @@ export default function FileEditorPanel() {
         )}
 
         <div className="flex items-center gap-2">
-          <FileEditorPanelModeDropdown />
+          <FileEditorPanelModeArrows />
         </div>
       </div>
       <FileEditorPanelForm data={data} />
