@@ -20,6 +20,7 @@ export default function Providers({ children }: { children: React.ReactNode }) {
         defaultTheme="system"
       >
         {children}
+        {/* <CommandProvider /> */}
       </ThemeProvider>
     </QueryClientProvider>
   );

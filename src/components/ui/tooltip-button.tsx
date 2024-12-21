@@ -7,9 +7,11 @@ export function TooltipButton({
   placement = "top",
   isDisabled = false,
   variant = "outline",
+  size = "icon",
   ...buttonProps
 }: {
   children: React.ReactNode;
+  size?: "default" | "sm" | "lg" | "icon" | null | undefined;
   tooltip: string;
   placement?: "top" | "bottom" | "left" | "right";
   isDisabled?: boolean;
@@ -20,7 +22,7 @@ export function TooltipButton({
       <Button
         isDisabled={isDisabled}
         variant={variant}
-        size="icon"
+        size={size}
         aria-label={tooltip}
         {...buttonProps}
       >

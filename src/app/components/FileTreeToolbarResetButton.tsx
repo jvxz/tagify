@@ -18,7 +18,11 @@ export default function FileTreeToolbarResetButton() {
   const { mode, setMode } = useModeStore();
   return (
     <DialogTrigger>
-      <TooltipButton isDisabled={files.length === 0} tooltip="Reset">
+      <TooltipButton
+        isDisabled={files.length === 0}
+        tooltip="Reset"
+        className="aspect-square"
+      >
         <RefreshCcw className="size-5" />
       </TooltipButton>
       <DialogOverlay isDismissable>

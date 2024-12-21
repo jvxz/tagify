@@ -2,8 +2,8 @@
 import React from "react";
 import { FileTrigger } from "react-aria-components";
 import useFileStore from "@/lib/store/files";
-import { TooltipButton } from "@/components/ui/tooltip-button";
 import { Import } from "lucide-react";
+import { Button } from "@/components/ui/button";
 
 function FileSelect() {
   const { addFiles } = useFileStore();
@@ -18,9 +18,9 @@ function FileSelect() {
         addFiles(files);
       }}
     >
-      <TooltipButton tooltip="Import">
-        <Import className="size-5" />
-      </TooltipButton>
+      <Button variant="outline" className="w-full gap-2">
+        Import <Import className="size-5" />
+      </Button>
     </FileTrigger>
   );
 }

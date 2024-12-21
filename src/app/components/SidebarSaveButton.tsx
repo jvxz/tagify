@@ -52,7 +52,7 @@ export default function SidebarSaveButton() {
         isDisabled={!mode.edited || mode.saving}
         placement="left"
         tooltip="Save"
-        variant="default"
+        variant="outline"
       >
         {mode.saving ? <Loader2 className="size-4 animate-spin" /> : <Save />}
       </TooltipButton>
