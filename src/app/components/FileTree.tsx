@@ -6,7 +6,13 @@ import useModeStore from "@/lib/store/mode";
 import useSearchStore from "@/lib/store/search";
 
 export default function FileTree() {
-  const { files, setSelectedFile, selectedFile } = useFileStore();
+  const {
+    files,
+    setSelectedFile,
+    selectedFile,
+    setCheckedFiles,
+    checkedFiles,
+  } = useFileStore();
   const { mode } = useModeStore();
   const { search } = useSearchStore();
 
@@ -25,12 +31,29 @@ export default function FileTree() {
     return file.name.toLowerCase().includes(search.toLowerCase());
   }
 
+  console.log(checkedFiles);
+
   return search !== ""
     ? files.map((file) => {
         if (handleSearch(file)) {
           return (
             <div key={file.name} className="mx-4 flex items-center gap-2">
-              {mode.checkbox && <Checkbox />}
+              {mode.checkbox && (
+                <Checkbox
+                  onChange={(e) => {
+                    if (e) {
+                      setCheckedFiles([
+                        ...checkedFiles,
+                        { name: file.name, file: file.file, tags: null },
+                      ]);
+                    } else {
+                      setCheckedFiles(
+                        checkedFiles.filter((f) => f.name !== file.name),
+                      );
+                    }
+                  }}
+                />
+              )}
               <Toggle
                 isSelected={selectedFile?.name === file.name}
                 onChange={(pressed) => handleToggle(pressed, file)}
@@ -45,7 +68,22 @@ export default function FileTree() {
     : files.map((file) => {
         return (
           <div key={file.name} className="mx-4 flex items-center gap-2">
-            {mode.checkbox && <Checkbox />}
+            {mode.checkbox && (
+              <Checkbox
+                onChange={(e) => {
+                  if (e) {
+                    setCheckedFiles([
+                      ...checkedFiles,
+                      { name: file.name, file: file.file, tags: null },
+                    ]);
+                  } else {
+                    setCheckedFiles(
+                      checkedFiles.filter((f) => f.name !== file.name),
+                    );
+                  }
+                }}
+              />
+            )}
             <Toggle
               isSelected={selectedFile?.name === file.name}
               onChange={(pressed) => {

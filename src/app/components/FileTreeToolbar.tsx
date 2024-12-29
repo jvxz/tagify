@@ -1,4 +1,3 @@
-"use client";
 import FileSelect from "./FileSelect";
 import FileTreeToolbarResetButton from "./FileTreeToolbarResetButton";
 import FileTreeToolbarCheckboxToggle from "./FileTreeToolbarCheckboxToggle";

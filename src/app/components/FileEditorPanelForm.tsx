@@ -23,26 +23,10 @@ export default function FileEditorPanelForm({
         ...mode,
         edited: false,
       });
-      const genre = () => {
-        if (Array.isArray(data?.common.genre)) {
-          return data?.common.genre.join(", ");
-        }
-        return data?.common.genre;
-      };
 
-      const comments = () => {
-        if (Array.isArray(data?.common.comment)) {
-          return data?.common.comment.map((comment) => comment.text).join(", ");
-        }
-        return data?.common.comment;
-      };
-
-      const composer = () => {
-        if (Array.isArray(data?.common.composer)) {
-          return data?.common.composer.join(", ");
-        }
-        return data?.common.composer;
-      };
+      const genre: string | undefined = data?.common.genre?.[0];
+      const comments: string | undefined = data?.common.comment?.[0]?.text;
+      const composer: string | undefined = data?.common.composer?.[0];
 
       setSelectedFile({
         ...selectedFile,
@@ -55,9 +39,9 @@ export default function FileEditorPanelForm({
           totalTracks: data?.common.track.of ?? 0,
           discNumber: data?.common.disk.no ?? 0,
           totalDiscs: data?.common.disk.of ?? 0,
-          genre,
-          comments,
-          composer,
+          genre: genre ?? "",
+          comments: comments ?? "",
+          composer: composer ?? "",
           grouping: data?.common.grouping ?? "",
           year: data?.common.year ?? 0,
         },
@@ -133,7 +117,7 @@ export default function FileEditorPanelForm({
           textArea
           name="comments"
           label="comments"
-          value={selectedFile?.tags?.comments()}
+          value={selectedFile?.tags?.comments ?? ""}
         />
       </div>
       <div className="flex flex-col gap-4">
@@ -166,7 +150,7 @@ export default function FileEditorPanelForm({
           onChange={(value) => handleChange("genre", value)}
           name="genre"
           label="genre"
-          value={selectedFile?.tags?.genre()}
+          value={selectedFile?.tags?.genre ?? ""}
         />
         <div className="flex gap-4">
           <JollyTextField

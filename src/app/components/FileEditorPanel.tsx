@@ -37,15 +37,19 @@ export default function FileEditorPanel() {
         {!selectedFile && <p className="flex-1">no file selected</p>}
         {selectedFile && !isLoading && (
           <div className="flex gap-2">
-            <Badge variant="outline">
-              {data?.format.duration && formatDuration(data.format.duration)}
-            </Badge>
-            <Badge variant="outline">
-              {data?.format.bitrate && formatBitrate(data.format.bitrate)}
-            </Badge>
-            <Badge variant="outline">
-              {data?.format.sampleRate && `${data.format.sampleRate} hz`}
-            </Badge>
+            {data?.format.duration && (
+              <Badge variant="outline">
+                {formatDuration(data.format.duration)}
+              </Badge>
+            )}
+            {data?.format.bitrate && (
+              <Badge variant="outline">
+                {formatBitrate(data.format.bitrate)}
+              </Badge>
+            )}
+            {data?.format.sampleRate && (
+              <Badge variant="outline">{data.format.sampleRate} hz</Badge>
+            )}
           </div>
         )}
 

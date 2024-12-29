@@ -1,3 +1,4 @@
+"use client";
 import { Input } from "@/components/ui/input";
 import useFileStore from "@/lib/store/files";
 import useSearchStore from "@/lib/store/search";

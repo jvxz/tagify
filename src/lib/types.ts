@@ -7,9 +7,9 @@ export type Tags = {
     totalTracks: number | undefined;
     discNumber: number | undefined;
     totalDiscs: number | undefined;
-    genre: () => string | undefined;
-    comments: () => string | undefined;
-    composer: () => string | undefined;
+    genre: string | undefined;
+    comments: string | undefined;
+    composer: string | undefined;
     grouping: string | undefined;
     year: number | undefined;
 }

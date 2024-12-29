@@ -13,6 +13,8 @@ interface FileState {
     removeFiles: (files: { name: string; file: File }[]) => void;
     clearFiles: () => void;
     setSelectedFile: (file: { name: string; file: File; tags: Tags | null } | null) => void;
+    checkedFiles: { name: string; file: File; tags: Tags | null }[];
+    setCheckedFiles: (files: { name: string; file: File; tags: Tags | null }[]) => void;
 }
 
 const useFileStore = create<FileState>((set) => ({
@@ -24,6 +26,8 @@ const useFileStore = create<FileState>((set) => ({
     removeFiles: (files) => set((state) => ({ files: state.files.filter(f => !files.includes(f)) })),
     clearFiles: () => set(() => ({ files: [] })),
     setSelectedFile: (file) => set(() => ({ selectedFile: file })),
+    checkedFiles: [],
+    setCheckedFiles: (files) => set(() => ({ checkedFiles: files })),
 }));
 
 export default useFileStore

@@ -1,3 +1,4 @@
+"use client";
 import { Toggle } from "@/components/ui/toggle";
 import useFileStore from "@/lib/store/files";
 import useModeStore from "@/lib/store/mode";
