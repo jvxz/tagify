@@ -13,7 +13,7 @@ export default async function saveTags(file: File, tags: Tags, name: string) {
     mp3tag.tags.artist = tags.artist!
     mp3tag.tags.title = tags.title!
     mp3tag.tags.year = tags.year!.toString()
-    mp3tag.tags.comment = tags.comments.toString()
+    mp3tag.tags.comment = tags.comments?.toString() ?? ""
 
     mp3tag.save()
 
